@@ -19,6 +19,7 @@ module Admin
     event.bot.profile.username = 'Small Worlds'
     avatar = File.open('resources/avatar.jpg')
     event.bot.profile.avatar = avatar
+    avatar.close
 
     # don't return anything when the command is run.
     nil
