@@ -13,21 +13,20 @@ module Admin
   end
 
   command :updateprofile, help_available: false do |event|
-    role = find_role(event, 'botadmin')
-    break unless event.user.role?(role)
+    break unless event.user.role?(find_role(event, 'botadmin'))
 
     event.bot.profile.username = 'Small Worlds'
-    avatar = File.open('resources/avatar.jpg')
-    event.bot.profile.avatar = avatar
-    avatar.close
+
+    File.open('resources/avatar.jpg') do |f|
+      event.bot.profile.avatar = f
+    end
 
     # don't return anything when the command is run.
     nil
   end
 
   command :adddeath, help_available: false do |event, *parse_string|
-    role = find_role(event, 'botadmin')
-    break unless event.user.role?(role)
+    break unless event.user.role?(find_role(event, 'botadmin'))
 
     parse_string = parse_string.join(' ')
     parse_string = parse_string.split('-', 2)
@@ -46,7 +45,7 @@ module Admin
         'count' => count
     }
 
-    file = File.open('resources/lastdeath.json', 'w+') do |f|
+    File.open('resources/lastdeath.json', 'w+') do |f|
       f.write(temp_hash.to_json)
     end
 
