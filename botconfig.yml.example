@@ -1,0 +1,3 @@
+token: SOME.TOKEN.HERE
+application_id: 1234567890
+prefix_char: '&'
