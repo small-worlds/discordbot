@@ -5,8 +5,6 @@ module PublicRoles
 
   # Assuming case-sensitive, case-matched to Discord roles
   public_roles = [
-    'Small Worlders',
-    'Xbox Small Worlders',
     'Roleplayers'
   ]
 
@@ -33,20 +31,5 @@ module PublicRoles
       event.respond "#{role} is either invalid or private."
       break
     end
-  end
-end
-
-module PublicRolesEvents
-  extend Discordrb::EventContainer
-
-  member_join do |event|
-    role = nil
-    event.server.roles.each do |server_role|
-      next unless server_role.name == 'Small Worlders'
-      role = server_role
-      break
-    end
-    puts "DEBUG: #{role.inspect}"
-    event.user.add_role(role) unless event.roles.include?(role)
   end
 end
