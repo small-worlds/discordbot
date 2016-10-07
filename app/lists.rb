@@ -1,9 +1,9 @@
 module Listing
   extend Discordrb::Commands::CommandContainer
-	
+
   wing_list = Array.new
   #The array that is wing_list is created.
-	
+
 #  def self.find_role(event, role)
 #    has_role = false
 #    event.server.roles.each do |server_role|
@@ -22,29 +22,34 @@ module Listing
     end
     return has_role
   end
-	
+
   command :winglist, description: "Lists those who are requesting wing." do |event|
   #Simple, return the array's contents. Also, admin lock this.
-    break unless event.user.role?(find_role(event, 'wingcaptain'))
+    break unless role?(event, 'wingcaptain') || role?(event, 'botadmin')
     #Check to see if they have the "wingcaptain role"
-    event.respond wing_list.join("\n")
+    puts wing_list.inspect
+    if wing_list.empty?
+      event.respond "No one is currently in the wing."
+    else
+      event.respond wing_list.join("\n")
+    end
 	#Why do I have the feeling this will barf data unintelligibly?
   end
-  
+
   command :wingremove, description: "Remove a person from the wing queue", min_args: 1, max_args: 1 do |event, target|
   #Remove someone who is on the wing list. Defo admin lock.
-    break unless event.user.role?(event, 'wingcaptain'))
-	#Check to see if they have the "wingcaptain role". I am aware this is a double comment.
-	wing_list.delete(target)
-	event.respond "Removed #{target} from the queue."
+    break unless role?(event, 'wingcaptain') || role?(event, 'botadmin')
+  	#Check to see if they have the "wingcaptain role". I am aware this is a double comment.
+  	wing_list.delete(target)
+  	event.respond "Removed #{target} from the queue."
   end
-  
+
   command :wingnuke, description: "Removes everything from the wing list. Useful for after a meetup." do |event|
-    break unless event.user.role?(event, 'wingcaptain') || role?(event, 'botadmin'))
-	#Check to see if they have the "wingcaptain" role AND "botadmin" role. Probably won't work.
-	wing_list.clear
-	#will this actually work? I think no, but i can't think of a better way.
-	event.respond "As requested, the list has been nuked."
+    break unless role?(event, 'wingcaptain') || role?(event, 'botadmin')
+  	#Check to see if they have the "wingcaptain" role AND "botadmin" role. Probably won't work.
+  	wing_list.clear
+  	#will this actually work? I think no, but i can't think of a better way.
+  	event.respond "As requested, the list has been nuked."
   end
 
   command :wingme, description: "Adds you to the wing queue" do |event|
@@ -56,18 +61,29 @@ module Listing
       event.respond "You're already on this list! Be patient!"
       #'and tell them off for it.
     else
-      wing_list << event.user.name 
+      wing_list << event.user.name
       #Find the user who typed &WingMe and add them to the array-list.
       event.respond "Added to the Wing request queue."
     end
   end
-  
+
   command :wingnext, description: "Displays the next in line, and tags them so they know about it. Also kicks them from the line." do |event|
   #prints top line of the text file, then removes it. Essentially shouting "Next"
-    tag_me = wing_list.shift
+
     #Save first value to tag_me
+    tag_me = wing_list.shift
+    if tag_me.nil?
+      event.respond "There is currently no queue."
+    end
+
+    # Find the member object associated with the member. We could probably do this more gracefully.
+    event.server.members.each do |member|
+      next unless member.username == tag_me
+      tag_me = member
+      break
+    end
+
     wing_list.uniq!
-    #Prints first value, then wipes from wing_list
-    event.respond "@#{tag_me} needs a wing."
+    event.respond "#{tag_me.mention} needs a wing."
   end
 end
