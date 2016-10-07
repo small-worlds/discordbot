@@ -49,6 +49,8 @@ module Listing
 
   command :wingme, description: "Need a wing? &WingMe" do |event|
   #Adds the person who used the command to wing_list.
+    break if event.channel.name.downcase == 'freetalk'
+	# Forces people to not use freetalk for wing requests.
     if wing_list.include?(event.user.name)
     #Check the user isn't spamming their name onto the list.
       event.respond "You're already on this list! Be patient!"
