@@ -14,7 +14,7 @@ require './app/gravity.rb'
 require './app/admin.rb'
 
 settings = YAML.load_file('botconfig.yml')
-if settings['token'].nil? && settings['client_id'].nil?
+if settings['token'].nil? || settings['client_id'].nil?
   puts '`token` and `client_id` are required! Please copy `botconfig.yml.example` to `botconfig.yml` and edit it with your credentials.'
   exit
 end
