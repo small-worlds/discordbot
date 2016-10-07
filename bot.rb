@@ -14,14 +14,14 @@ require './app/gravity.rb'
 require './app/admin.rb'
 
 settings = YAML.load_file('botconfig.yml')
-if settings['token'].nil? && settings['application_id'].nil?
-  puts '`token` and `application_id` are required! Please copy `botconfig.yml.example` to `botconfig.yml` and edit it with your credentials.'
+if settings['token'].nil? && settings['client_id'].nil?
+  puts '`token` and `client_id` are required! Please copy `botconfig.yml.example` to `botconfig.yml` and edit it with your credentials.'
   exit
 end
 
 settings['prefix_char'] ||= '&'
 
-bot = Discordrb::Commands::CommandBot.new token: settings['token'], application_id: settings['application_id'], prefix: settings['prefix_char'], advanced_functionality: false
+bot = Discordrb::Commands::CommandBot.new token: settings['token'], application_id: settings['client_id'], prefix: settings['prefix_char'], advanced_functionality: false
 
 bot.bucket :memes, limit: 3, time_span: 60, delay: 10
 
