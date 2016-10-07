@@ -25,19 +25,23 @@ module Listing
 	
   command :winglist, description: "Lists those who are requesting wing." do |event|
   #Simple, return the array's contents. Also, admin lock this.
-    break unless role?(event, 'wingcaptain')
+    break unless role?(event, 'wingcaptain') || role?(event, 'botadmin')
     #Check to see if they have the "wingcaptain role"
-    event.respond wing_list.join("\n")
-	#Why do I have the feeling this will barf data unintelligibly?
-  end
+      if wing_list.empty?
+        event.respond "No one is currently in the wing."
+      else
+        event.respond wing_list.join("\n")
+	    #Why do I have the feeling this will barf data unintelligibly?
+      end
+    end
   
   command :wingremove, description: "Remove a person from the wing queue", min_args: 1, max_args: 1 do |event, target|
   #Remove someone who is on the wing list. Defo admin lock.
-    break unless event.user.role?(event, 'wingcaptain')
+    break unless event.user.role?(event, 'wingcaptain') || role?(event, 'botadmin')
 	#Check to see if they have the "wingcaptain role". I am aware this is a double comment.
-	wing_list.delete(target)
-	event.respond "Removed #{target} from the queue."
-  end
+	  wing_list.delete(target)
+	  event.respond "Removed #{target} from the queue."
+    end
   
   command :wingnuke, description: "Removes everything from the wing list. Useful for after a meetup." do |event|
     break unless role?(event, 'wingcaptain') || role?(event, 'botadmin')
@@ -68,6 +72,10 @@ module Listing
     #Save first value to tag_me
     wing_list.uniq!
     #Prints first value, then wipes from wing_list
-    event.respond "@#{tag_me} needs a wing."
+    if wing_list.empty?
+      event.respond "There is currently no queue."
+    else
+      event.respond "@#{tag_me} needs a wing."
+    end
   end
 end
