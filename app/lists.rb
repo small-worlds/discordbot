@@ -40,14 +40,14 @@ module Listing
   end
   
   command :wingnuke, description: "Removes everything from the wing list. Useful for after a meetup." do |event|
-    break unless event.user.role?(event, 'wingcaptain') || find_role(event, 'botadmin'))
+    break unless event.user.role?(event, 'wingcaptain') || role?(event, 'botadmin'))
 	#Check to see if they have the "wingcaptain" role AND "botadmin" role. Probably won't work.
 	wing_list.clear
 	#will this actually work? I think no, but i can't think of a better way.
 	event.respond "As requested, the list has been nuked."
   end
 
-  command :wingme, description: "NAdds you to the wing queue" do |event|
+  command :wingme, description: "Adds you to the wing queue" do |event|
   #Adds the person who used the command to wing_list.
     break if event.channel.name.downcase == 'freetalk'
 	# Forces people to not use freetalk for wing requests.
