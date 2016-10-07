@@ -25,7 +25,7 @@ module Listing
 	
   command :winglist, description: "Lists those who are requesting wing." do |event|
   #Simple, return the array's contents. Also, admin lock this.
-    break unless event.user.role?(find_role(event, 'wingcaptain'))
+    break unless role?(event, 'wingcaptain')
     #Check to see if they have the "wingcaptain role"
     event.respond wing_list.join("\n")
 	#Why do I have the feeling this will barf data unintelligibly?
@@ -40,7 +40,7 @@ module Listing
   end
   
   command :wingnuke, description: "Removes everything from the wing list. Useful for after a meetup." do |event|
-    break unless event.user.role?(event, 'wingcaptain') || role?(event, 'botadmin')
+    break unless role?(event, 'wingcaptain') || role?(event, 'botadmin')
 	#Check to see if they have the "wingcaptain" role AND "botadmin" role. Probably won't work.
 	  wing_list.clear
 	  #will this actually work? I think no, but i can't think of a better way.
