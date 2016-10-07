@@ -33,19 +33,19 @@ module Listing
   
   command :wingremove, description: "Remove a person from the wing queue", min_args: 1, max_args: 1 do |event, target|
   #Remove someone who is on the wing list. Defo admin lock.
-    break unless event.user.role?(event, 'wingcaptain'))
+    break unless event.user.role?(event, 'wingcaptain')
 	#Check to see if they have the "wingcaptain role". I am aware this is a double comment.
 	wing_list.delete(target)
 	event.respond "Removed #{target} from the queue."
   end
   
   command :wingnuke, description: "Removes everything from the wing list. Useful for after a meetup." do |event|
-    break unless event.user.role?(event, 'wingcaptain') || role?(event, 'botadmin'))
+    break unless event.user.role?(event, 'wingcaptain') || role?(event, 'botadmin')
 	#Check to see if they have the "wingcaptain" role AND "botadmin" role. Probably won't work.
-	wing_list.clear
-	#will this actually work? I think no, but i can't think of a better way.
-	event.respond "As requested, the list has been nuked."
-  end
+	  wing_list.clear
+	  #will this actually work? I think no, but i can't think of a better way.
+	  event.respond "As requested, the list has been nuked."
+    end
 
   command :wingme, description: "Adds you to the wing queue" do |event|
   #Adds the person who used the command to wing_list.

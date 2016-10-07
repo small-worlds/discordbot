@@ -12,6 +12,7 @@ require './app/countdown.rb'
 require './app/roles.rb'
 require './app/gravity.rb'
 require './app/admin.rb'
+require './app/lists.rb'
 
 settings = YAML.load_file('botconfig.yml')
 if settings['token'].nil? && settings['application_id'].nil?
@@ -36,4 +37,5 @@ bot.include! Countdown
 bot.include! PublicRoles
 bot.include! GravityCalculator
 bot.include! Admin
+bot.include! Listing
 bot.run
