@@ -21,7 +21,7 @@ module Listing
       if wing_list.empty?
         event.respond "No one is currently in the wing."
       else
-        event.respond wing_list.join("\n")
+        event.respond "\n" + wing_list.join("\n")
 	    #Why do I have the feeling this will barf data unintelligibly?
       end
     end
