@@ -5,7 +5,8 @@ module PublicRoles
 
   # Assuming case-sensitive, case-matched to Discord roles
   public_roles = [
-    'Roleplayers'
+    'Roleplayers',
+    'Safarians'
   ]
 
   command :role, description: "Add or remove a public role on yourself", usage: "role <rolename>\nAvailable roles:\n- #{public_roles.join("\n- ")}" do |event, *role_name|
