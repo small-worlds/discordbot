@@ -2,16 +2,6 @@ require 'zalgo'
 
 module CustomCommands
   extend Discordrb::Commands::CommandContainer
-  
-  def self.role?(event, role)
-    has_role = false
-    event.server.roles.each do |server_role|
-      next unless server_role.name == role
-      has_role = true
-      break
-    end
-    return has_role
-  end
 
   memes = {
     ayy: "https://cdn.drawception.com/images/panels/2015/6-16/xQfqepw73p-2.png",
