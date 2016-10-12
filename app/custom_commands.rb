@@ -15,7 +15,7 @@ module CustomCommands
 
   memes = {
     ayy: "https://cdn.drawception.com/images/panels/2015/6-16/xQfqepw73p-2.png",
-	banned: "http://i.imgur.com/O3DHIA5.gif",
+    banned: "http://i.imgur.com/O3DHIA5.gif",
     braben: [
       "https://cdn.discordapp.com/attachments/197446400479330304/218859855773958145/Thargoid.jpg",
       "https://cdn.discordapp.com/attachments/192085854116773889/220904177407098880/Brabenisthargoid.png"
