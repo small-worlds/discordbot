@@ -2,9 +2,20 @@ require 'zalgo'
 
 module CustomCommands
   extend Discordrb::Commands::CommandContainer
+  
+  def self.role?(event, role)
+    has_role = false
+    event.server.roles.each do |server_role|
+      next unless server_role.name == role
+      has_role = true
+      break
+    end
+    return has_role
+  end
 
   memes = {
     ayy: "https://cdn.drawception.com/images/panels/2015/6-16/xQfqepw73p-2.png",
+	banned: "http://i.imgur.com/O3DHIA5.gif",
     braben: [
       "https://cdn.discordapp.com/attachments/197446400479330304/218859855773958145/Thargoid.jpg",
       "https://cdn.discordapp.com/attachments/192085854116773889/220904177407098880/Brabenisthargoid.png"
@@ -27,7 +38,7 @@ module CustomCommands
   }
 
   command :meme, description: "Full of dank.", bucket: :memes, usage: "meme [<meme name>]\nAvailable memes:\n- #{memes.keys.join("\n- ")}", min_args: 0, max_args: 1 do |event, meme|
-    break unless event.channel.name.downcase == "bot-abuse"
+    break unless event.channel.name.downcase == "bot-abuse" || role?(event, 'botadmin')
     meme = memes.keys.sample unless meme && memes.key?(meme.downcase.to_sym)
 
     response = memes[meme.downcase.to_sym]
