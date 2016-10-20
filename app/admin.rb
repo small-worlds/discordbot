@@ -30,7 +30,7 @@ module Admin
 
     parse_string = parse_string.join(' ')
     parse_string = parse_string.split('-', 2)
-    name = parse_string[0].chomp('')
+    name = parse_string[0].gsub(/\s+$/, '')
     reason = parse_string[1].chomp.gsub!(/^\s+/, '')
 
     file = File.read('resources/lastdeath.json')
