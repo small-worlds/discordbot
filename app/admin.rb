@@ -52,7 +52,7 @@ module Admin
     "Womp womp. #{name} died at #{time} - #{reason}. New count: #{count}"
   end
   
-  def :membercount, help_available: false do |event| #"help_available: false" hides it from the help command.
+  command :membercount, help_available: false do |event| #"help_available: false" hides it from the help command.
     event.server.member_count # this returns a numerical value for server population automagically.
   end
 end
