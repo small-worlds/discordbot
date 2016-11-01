@@ -28,7 +28,7 @@ module CustomCommands
   }
 
   command :meme, description: "Full of dank.", bucket: :memes, usage: "meme [<meme name>]\nAvailable memes:\n- #{memes.keys.join("\n- ")}", min_args: 0, max_args: 1 do |event, meme|
-    break unless event.channel.name.downcase == "bot-abuse"
+    break if event.channel.name.downcase == "freetalk"
     meme = memes.keys.sample unless meme && memes.key?(meme.downcase.to_sym)
 
     response = memes[meme.downcase.to_sym]
