@@ -55,4 +55,12 @@ module Admin
   command :membercount, help_available: false do |event| #"help_available: false" hides it from the help command.
     event.server.member_count # this returns a numerical value for server population automagically.
   end
+  
+  command :restart, help_available: false do |event|
+    break unless event.user.role?(find_role(event, 'botadmin'))
+    event.respond "Blame #{event.user.name}, restarting the bot."
+    event.bot.stop #should "gracefully" stop the bot.
+    pid = Process.exec('ruby bot.rb') #Spawn a copy of the bot's process.
+    Process.detach pid #Kill the current one, switching to the new one automagically.
+  end
 end
