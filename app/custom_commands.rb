@@ -61,4 +61,11 @@ module CustomCommands
     msg = text.join(' ')
     event.respond Zalgo.he_comes(msg)
   end
+  
+  command :guide, description: "How not to got splat on HWCC" do |event|
+#    break if event.channel.name.downcase == "freetalk"
+    event << "VirtualAnomaly's guide: \n"
+    event << "Ravstar52's guide: https://goo.gl/dzUnWm \n"
+    event << "Rosander's guide: "
+  end
 end
