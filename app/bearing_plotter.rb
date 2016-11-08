@@ -5,9 +5,7 @@ module BearingPlotter
     delta_x = x_start - x_end #dX for the tan calculation
     delta_y = y_start - y_end #dY for the tan calculation
     heading = (Math.atan2(delta_y, delta_y) * (180/Math::PI)) #Takes dX and dY, runs them through tan, and then makes them into Deg (from radians)
-    if (heading <= 0)
-      heading = 360 + heading
-    end
+    heading = 360 + heading if heading <= 0
     event.respond "Fly on heading #{heading.round(0)}"
   end
 end
