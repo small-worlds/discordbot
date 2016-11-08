@@ -51,11 +51,28 @@ module Admin
 
     "Womp womp. #{name} died at #{time} - #{reason}. New count: #{count}"
   end
-  
+
   command :membercount, help_available: false do |event| #"help_available: false" hides it from the help command.
     event.server.member_count # this returns a numerical value for server population automagically.
   end
-  
+
+  command :update, help_available: false do |event|
+    break unless event.user.role?(find_role(event, 'botadmin'))
+
+    user = nil
+    if system('git pull --ff-only')
+      event.respond 'bot pulled cleanly!'
+    else
+      event.server.members.each do |member|
+        next unless member.username == 'LaneAtomic'
+        user = member
+        break
+      end
+      append = user ? "PING #{user.mention}!" : 'Lane has left the server(!!!) - update the maintainer in this method!'
+      event << "WARNING: bot did not cleanly pull! #{append}"
+    end
+  end
+
   command :restart, help_available: false do |event|
     break unless event.user.role?(find_role(event, 'botadmin'))
     event.respond "Blame #{event.user.name}, restarting the bot."
