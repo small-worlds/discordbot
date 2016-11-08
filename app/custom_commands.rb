@@ -14,6 +14,7 @@ module CustomCommands
     fangirling: "http://i.imgur.com/GBgz12Q.gif",
     gofast: "https://41.media.tumblr.com/tumblr_ma86gbciIo1qg1jivo1_1280.png",
     innuendo: "https://cdn.meme.am/instances/500x/18009491.jpg",
+    itshappening: "https://giphy.com/gifs/neogaf-ron-sanders-makrD8LE59iJa",
     knife: "http://pngimg.com/upload/spoon_PNG3043.png",
     nobody: "http://i.imgur.com/FMiHqHj.jpg",
     peropq: "https://cdn.discordapp.com/attachments/197446400479330304/218859355821441035/5D3jfaG.png",
