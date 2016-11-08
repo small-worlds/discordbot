@@ -13,6 +13,7 @@ require './app/roles.rb'
 require './app/gravity.rb'
 require './app/admin.rb'
 require './app/lists.rb'
+require './app/bearing_plotter.rb'
 
 settings = YAML.load_file('botconfig.yml')
 if settings['token'].nil? || settings['client_id'].nil?
@@ -38,4 +39,5 @@ bot.include! PublicRoles
 bot.include! GravityCalculator
 bot.include! Admin
 bot.include! Listing
+bot.include! BearingPlotter
 bot.run
