@@ -4,6 +4,23 @@ require 'json'
 module Expeditions
   extend Discordrb::Commands::CommandContainer
 
+  command :registrations, description: 'Get a list of all registrations, optionally for a given expedition', usage: '[<expedition id>]', min_args: 0, max_args: 1 do |event, expedition_id|
+    expedition_id ||= 1 # The current expedition.
+    message = ['Current registrations:']
+
+    registrations = JSON.parse(RestClient.get("https://api.smallworlds.io/api/expeditions/#{expedition_id}/registrations/", {accept: :json}).body)
+
+    event.respond "Sending you a PM!"
+
+    registrations.each do |registration|
+      username = JSON.parse(RestClient.get("https://api.smallworlds.io/api/users/#{registration['user']}", {accept: :json}).body)['username']
+      message.push "#{registration['registration_number'].to_s.rjust(3, '0')}: #{username} - #{registration['ship_model']}"
+      message[-1] = "#{message[-1]}, *#{registration['ship_name']}*" unless registration['ship_name'] == ''
+    end
+
+    event.user.pm(message.join("\n"))
+  end
+
   command :regnum, description: 'Get a user\'s registration number, optionally for a given expedition', usage: "<username> [<expedition id>]", min_args: 1, max_args: 2 do |event, username, expedition_id|
     expedition_id ||= 1 # The current expedition.
     user_object = JSON.parse(RestClient.get("https://api.smallworlds.io/api/users/", {accept: :json}).body)
