@@ -10,6 +10,6 @@ module TableFlip
   end
   
   command :shrug, description: "*shrugs*" do |event|
-    event.respond "¯\_(ツ)_/¯"
+    event.respond "¯\\\_(ツ)\_/¯"
   end
 end
