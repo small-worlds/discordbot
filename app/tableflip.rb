@@ -7,5 +7,9 @@ module TableFlip
   
   command :unflip, description: "Unflip those flipped tables. Poor table-kun" do |event|
     event.respond "┬─┬﻿ ノ( ゜-゜ノ)"
-   end
+  end
+  
+  command :shrug, description: "*shrugs*" do |event|
+    event.respond "¯\_(ツ)_/¯"
+  end
 end
