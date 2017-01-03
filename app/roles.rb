@@ -6,15 +6,15 @@ module PublicRoles
   # Assuming case-sensitive, case-matched to Discord roles
   public_roles = [
     'Roleplayers',
-    'Luchadors'
+    'HWCC Expedition'
   ]
 
   command :role, description: "Add or remove a public role on yourself", usage: "role <rolename>\nAvailable roles:\n- #{public_roles.join("\n- ")}" do |event, *role_name|
-    role = role_name.join(' ').downcase.titleize
+    role = role_name.join(' ')
 
     if public_roles.include?(role)
       event.server.roles.each do |server_role|
-        next unless server_role.name == role
+        next unless server_role.name.downcase == role.downcase
         role = server_role
         break
       end
