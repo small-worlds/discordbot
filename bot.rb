@@ -25,7 +25,10 @@ end
 
 settings['prefix_char'] ||= '&'
 
-bot = Discordrb::Commands::CommandBot.new token: settings['token'], application_id: settings['client_id'], prefix: settings['prefix_char'], advanced_functionality: false
+bot = Discordrb::Commands::CommandBot.new token: settings['token'],
+                                          client_id: settings['client_id'],
+                                          prefix: settings['prefix_char'],
+                                          advanced_functionality: false
 
 bot.bucket :memes, limit: 3, time_span: 60, delay: 10
 
