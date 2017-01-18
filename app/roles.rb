@@ -9,7 +9,8 @@ module PublicRoles
     'HWCC Expedition'
   ]
 
-  command :role, description: "Add or remove a public role on yourself", usage: "role <rolename>\nAvailable roles:\n- #{public_roles.join("\n- ")}" do |event, *role_name|
+  command :role, description: "Add or remove a public role on yourself",
+                 usage: "role <rolename>\nAvailable roles:\n- #{public_roles.join("\n- ")}" do |event, *role_name|
     role = role_name.join(' ')
 
     if public_roles.include?(role)

@@ -1,3 +1,18 @@
+# This is your bot's token, created in the dev portal.
 token: SOME.TOKEN.HERE
+
+# This is the client ID as specified in the dev portal.
 client_id: 1234567890
+
+# Prefix char for commands, defaults to '&' because everyone uses '!'
 prefix_char: '&'
+
+# The role ID of the role you want to be able to admin the bot.
+botadmin_role_id: 123456789012345678
+
+# Logging modes are `debug`, `verbose`, `normal`, `quiet`, and `silent`
+# Default is `normal`
+log_mode: normal
+
+# Fancy logging? (Not sure what this does yet. Thanks DiscordRB!)
+fancy_log: false

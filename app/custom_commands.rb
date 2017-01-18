@@ -37,32 +37,33 @@ module CustomCommands
     event.respond response
   end
 
-  command :kgbfoam, description: "To learn about filtering the Galaxy Map", bucket: :memes do |event|
+  command :kgbfoam, description: "To learn about filtering the Galaxy Map" do |event|
     event.respond "To learn about Filtering the Galaxy Map, click here: http://t.fuelr.at/kgbfoam"
   end
 
-  command :deathcount, description: "SWE Death Count" do |event|
-    file = File.read('resources/lastdeath.json')
-    data_hash= JSON.parse(file)
-
-    last_death = Time.parse(data_hash["timestamp"])
-
-    puts last_death
-
-    diff = Time.diff(last_death, Time.now.utc)
-    name = data_hash["name"]
-    death = data_hash["reason"]
-    count = data_hash["count"]
-    event << "SWE Death Count: **#{count}**"
-    event << "We have gone #{diff[:diff]} without an accident."
-    event << "Most recent death: **#{name}** #{death}"
-  end
+### Disabling until we have an endpoint on the API for this.
+  # command :deathcount, description: "SWE Death Count" do |event|
+  #   file = File.read('resources/lastdeath.json')
+  #   data_hash= JSON.parse(file)
+  #
+  #   last_death = Time.parse(data_hash["timestamp"])
+  #
+  #   puts last_death
+  #
+  #   diff = Time.diff(last_death, Time.now.utc)
+  #   name = data_hash["name"]
+  #   death = data_hash["reason"]
+  #   count = data_hash["count"]
+  #   event << "SWE Death Count: **#{count}**"
+  #   event << "We have gone #{diff[:diff]} without an accident."
+  #   event << "Most recent death: **#{name}** #{death}"
+  # end
 
   command :zalgo, description: "He comes", bucket: :memes, min_args: 1 do |event, *text|
     msg = text.join(' ')
     event.respond Zalgo.he_comes(msg)
   end
-  
+
   command :guide, description: "How not to got splat on HWCC" do |event|
 #    break if event.channel.name.downcase == "freetalk"
     event << "VirtualAnomaly's guide: https://goo.gl/tTM5ug\n"

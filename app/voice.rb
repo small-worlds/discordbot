@@ -31,7 +31,9 @@ module Voice
     inception
   )
 
-  command :voice, description: "Send a voice! If none specified, randomize!", usage: "voice [<voice_type>]\nVoice types:\n- #{voices.join("\n- ")}", min_args: 0, max_args: 1 do |event, type|
+  command :voice, description: "Send a voice! If none specified, randomize!",
+                  usage: "voice [<voice_type>]\nVoice types:\n- #{voices.join("\n- ")}",
+                  min_args: 0, max_args: 1 do |event, type|
     break if rate_limiter.rate_limited?(:voice_bucket, event.channel)
 
     type = voices.sample unless voices.include?(type)
@@ -42,6 +44,7 @@ module Voice
     event.voice.play_file(File.path("audio/#{type.downcase}.wav"))
     event.bot.voice(event.server).destroy
 
-    nil # to avoid sending the return of the voice destroy
+    # to avoid sending the return of the voice destroy
+    nil
   end
 end

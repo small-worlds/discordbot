@@ -9,12 +9,12 @@ require './app/max_jump.rb'
 require './app/context.rb'
 require './app/roleplay.rb'
 require './app/countdown.rb'
-require './app/roles.rb'
+# require './app/roles.rb'
 require './app/gravity.rb'
 require './app/admin.rb'
-require './app/lists.rb'
+# require './app/lists.rb'
 require './app/bearing_plotter.rb'
-require './app/expeditions.rb'
+# require './app/expeditions.rb'
 require './app/tableflip.rb'
 
 settings = YAML.load_file('botconfig.yml')
@@ -25,9 +25,27 @@ end
 
 settings['prefix_char'] ||= '&'
 
-bot = Discordrb::Commands::CommandBot.new token: settings['token'], application_id: settings['client_id'], prefix: settings['prefix_char'], advanced_functionality: false
+case settings['log_mode'].downcase
+when 'debug'
+  log_mode = :debug
+when 'verbose'
+  log_mode = :verbose
+when 'quiet'
+  log_mode = :quiet
+when 'silent'
+  log_mode = :silent
+else
+  log_mode = :normal
+end
+
+bot = Discordrb::Commands::CommandBot.new token: settings['token'],
+                                          client_id: settings['client_id'],
+                                          prefix: settings['prefix_char'],
+                                          advanced_functionality: false,
+                                          log_mode: log_mode
 
 bot.bucket :memes, limit: 3, time_span: 60, delay: 10
+
 
 puts "Invite URL is #{bot.invite_url}"
 
@@ -37,11 +55,11 @@ bot.include! MaxJumpCalculator
 bot.include! NoContext
 bot.include! Roleplay
 bot.include! Countdown
-bot.include! PublicRoles
+# bot.include! PublicRoles
 bot.include! GravityCalculator
 bot.include! Admin
-bot.include! Listing
+# bot.include! Listing
 bot.include! BearingPlotter
-bot.include! Expeditions
+# bot.include! Expeditions
 bot.include! TableFlip
 bot.run

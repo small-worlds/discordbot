@@ -6,38 +6,39 @@ module Countdown
   extend Discordrb::Commands::CommandContainer
 
   waypoints = {
-    'meetup' => Time.new(2016,9,10,19,00,00, "+00:00"),
-    'wp0' => Time.new(2016,9,17,19,00,00, "+00:00"),
-    'wp0launch' => Time.new(2016,9,17,19,30,00, "+00:00"),
-    'wp1' => Time.new(2016,9,19,23,00,00, "+00:00"),
-    'wp1launch' => Time.new(2016,9,19,23,45,00, "+00:00"),
-    'wp2' => Time.new(2016,9,21,23,00,00, "+00:00"),
-    'wp2launch' => Time.new(2016,9,21,23,45,00, "+00:00"),
-    'wp3' => Time.new(2016,9,23,23,00,00, "+00:00"),
-    'wp3launch' => Time.new(2016,9,23,23,45,00, "+00:00"),
-    'wp4' => Time.new(2016,9,25,19,00,00, "+00:00"),
-    'wp4launch' => Time.new(2016,9,25,19,45,00, "+00:00"),
-    'wp5' => Time.new(2016,9,27,23,00,00, "+00:00"),
-    'wp5launch' => Time.new(2016,9,27,23,45,00, "+00:00"),
-    'ghostofjupiter' => Time.new(2016,9,29,00,00,00, "+00:00"),
-    'wp6' => Time.new(2016,9,29,23,00,00, "+00:00"),
-    'wp6launch' => Time.new(2016,9,29,23,45,00, "+00:00"),
-    'wp7' => Time.new(2016,10,1,19,00,00, "+00:00"),
-    'wp7launch' => Time.new(2016,10,1,19,45,00, "+00:00"),
-    'wp8' => Time.new(2016,10,4,23,00,00, "+00:00"),
-    'wp8launch' => Time.new(2016,10,4,23,45,00, "+00:00"),
-    'wp9' => Time.new(2016,10,5,23,00,00, "+00:00"),
-    'wp9launch' => Time.new(2016,10,5,23,45,00, "+00:00"),
-    'wp10' => Time.new(2016,10,7,23,00,00, "+00:00")
+    'wp6' => Time.new(2017,1,20,00,00,00, "+00:00"),
+    'wp6launch' => Time.new(2017,1,20,1,00,00, "+00:00"),
+    'wp7' => Time.new(2017,10,1,21,19,00, "+00:00"),
+    'wp7launch' => Time.new(2017,1,21,20,00,00, "+00:00"),
+    'wp8' => Time.new(2017,1,26,00,00,00, "+00:00"),
+    'wp8launch' => Time.new(2017,1,26,1,00,00, "+00:00"),
+    'wp9' => Time.new(2017,1,28,19,00,00, "+00:00"),
+    'wp9launch' => Time.new(2017,1,28,20,00,00, "+00:00"),
+    'wp10' => Time.new(2017,2,1,00,00,00, "+00:00"),
+    'wp10launch' => Time.new(2017,2,1,1,00,00, "+00:00"),
+    'wp11' => Time.new(2017,2,3,00,00,00, "+00:00"),
+    'wp11launch' => Time.new(2017,2,3,1,00,00, "+00:00"),
+    'wp12' => Time.new(2017,2,5,19,00,00, "+00:00"),
+    'wp12launch' => Time.new(2017,2,5,20,00,00, "+00:00"),
+    'wp13' => Time.new(2017,2,8,00,00,00, "+00:00"),
+    'wp13launch' => Time.new(2017,2,8,1,00,00, "+00:00"),
+    'wp14' => Time.new(2017,2,10,00,00,00, "+00:00"),
+    'wp14launch' => Time.new(2017,2,10,1,00,00, "+00:00"),
+    'wp15' => Time.new(2017,2,11,19,00,00, "+00:00")
   }
 
-  command :countdown, description: 'Time until a given waypoint', usage: 'countdown [<waypoint>]', min_args: 0, max_args: 1 do |event, waypoint|
+  command :countdown, description: 'Time until a given waypoint',
+                      usage: 'countdown [<waypoint>]',
+                      min_args: 0, max_args: 1 do |event, waypoint|
     unless waypoint && waypoints.key?(waypoint.downcase)
       curr_time = Time.now.utc
       waypoints.each do |wp,time|
         next if time < curr_time
         waypoint = wp
         break
+      end
+      if waypoint.nil?
+        event.respond "The expedition has ended."
       end
     end
 
