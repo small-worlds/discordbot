@@ -9,14 +9,14 @@ module BearingPlotter
                     usage: "<Your position's X> <Your position's Y> <Destination's X> <Destination's Y>",
                     min_args: 4, max_args: 4 do |event, x_start, y_start, x_end, y_end|
     # dX for the tan calculation
-    delta_x = x_start.to_f - x_end.to_f
+    delta_x = x_end.to_f - x_start.to_f
 
     #dY for the tan calculation
-    delta_y = y_start.to_f - y_end.to_f
+    delta_y = y_end.to_f - y_start.to_f
 
     # Takes dX and dY, runs them through tan, and then makes them into Deg (from radians)
-    heading = (Math.atan2(delta_y, delta_y) * (180/Math::PI))
-    heading = 360 + heading if heading <= 0
+    heading = (Math.atan2(delta_y, delta_x) * (180/Math::PI))
+    heading = 360 + heading if heading < 0
     
     event.respond "Fly on heading #{heading.round(0)}"
   end
