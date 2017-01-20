@@ -43,7 +43,7 @@ module CustomCommands
 
 ### Disabling until we have an endpoint on the API for this.
 ### or not. I still want an endpoint on the API.
-  command :deathcount, description: "SWE Death Count" do |event|
+  command :deathcount, description: "Death Count" do |event|
     file = File.read('resources/lastdeath.json')
     data_hash= JSON.parse(file)
 
@@ -55,7 +55,7 @@ module CustomCommands
     name = data_hash["name"]
     death = data_hash["reason"]
     count = data_hash["count"]
-    event << "SWE Death Count: **#{count}**"
+    event << "HWCC Death Count: **#{count}**"
     event << "We have gone #{diff[:diff]} without an accident."
     event << "Most recent death: **#{name}** #{death}"
   end
