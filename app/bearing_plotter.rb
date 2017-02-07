@@ -14,13 +14,13 @@ module BearingPlotter
     #dY for the tan calculation
     delta_y = y_end.to_f - y_start.to_f
 
-    #Takes dX and dY, runs them through tan, and then makes them into Deg (from radians)
+    # Takes dX and dY, runs them through tan, and then makes them into Deg (from radians)
     heading = (Math.atan2(delta_y, delta_x) * (180/Math::PI))
     heading = 360 + heading if heading < 0
     
     event.respond "Fly on heading #{heading.round(0)}"
   end
-  
+
   command :glide, description: "&bearing + glide angle calculator. " \ 
                     "Assumes the ground under you and the POI are the same altitude." \
                     "Not guaranteed to work. " \
