@@ -17,11 +17,11 @@ module BearingPlotter
     # Takes dX and dY, runs them through tan, and then makes them into Deg (from radians)
     heading = (Math.atan2(delta_y, delta_x) * (180/Math::PI))
     heading = 360 + heading if heading < 0
-    
+
     event.respond "Fly on heading #{heading.round(0)}"
   end
 
-  command :glide, description: "&bearing + glide angle calculator. " \ 
+  command :glide, description: "&bearing + glide angle calculator. " \
                     "Assumes the ground under you and the POI are the same altitude." \
                     "Not guaranteed to work. " \
                     "Repeated calculations are recommended.",
@@ -37,11 +37,12 @@ module BearingPlotter
     #Takes dX and dY, runs them through tan, and then makes them into Deg (from radians)
     heading = (Math.atan2(delta_y, delta_x) * (180/Math::PI))
     heading = 360 + heading if heading < 0
-    
+
     event << "Fly on heading #{heading.round(0)}"
-    
+
     #Attempting to generate a glide angle
     glide = (Math.atan2( Math.sqrt( delta_x ** 2 + delta_y ** 3),  altitude) * (180/Math::PI) )
-    
+
     event.respond << "and at a glide angle of -#{glide.round(0)}"
+  end
 end
