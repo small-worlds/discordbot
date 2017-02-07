@@ -41,7 +41,7 @@ module BearingPlotter
     event << "Fly on heading #{heading.round(0)}"
 
     #Attempting to generate a glide angle
-    glide = (Math.atan2( Math.sqrt( delta_x ** 2 + delta_y ** 2),  altitude.to_f) * (180/Math::PI) )
+    glide = (Math.atan2( Math.sqrt( delta_x ** 2 + delta_y ** 2),  altitude) * (180/Math::PI) )
 
     event << "and at a glide angle of -#{glide.round(0)}"
   end
