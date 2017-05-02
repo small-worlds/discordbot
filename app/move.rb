@@ -2,6 +2,15 @@ module Move
   extend Discordrb::Commands::CommandContainer
 
   command :move, description: "m", min_args: 2, max_args: 2 do |event, c1, c2|
+    ok=nil
+    event.user.roles.each do |role|
+      if ["Management","Administration"].include?(role.name)
+        ok=1
+        break
+      end
+    end
+    break unless ok
+
     channel1=nil
     channel2=nil
     event.server.channels.each do |c|
