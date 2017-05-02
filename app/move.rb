@@ -5,23 +5,24 @@ module Move
     channel1=nil
     channel2=nil
     event.server.channels.each do |c|
-      if c.name == c1
+      if c.name == c1 and c.voice?
         channel1=c
       end
-      if c.name == c2
+      if c.name == c2 and c.voice?
         channel2=c
       end
     end
     if not channel1
-      event.respond 'Channel 1 not found'
+      event.respond 'Channel 1 not found or not a voice channel'
+      break
     end
     if not channel2
-      event.respond 'Channel 2 not found'
+      event.respond 'Channel 2 not found or not a voice channel'
+      break
     end
     event.respond 'Moving'
     channel1.users.each do |u|
       event.server.move(u,channel2)
     end
-    #event.server.move(event.user, channel)
   end
 end
