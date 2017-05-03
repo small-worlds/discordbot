@@ -12,7 +12,7 @@ require './app/countdown.rb'
 require './app/roles.rb'
 require './app/gravity.rb'
 require './app/admin.rb'
-# require './app/lists.rb'
+require './app/lists.rb'
 require './app/bearing_plotter.rb'
 # require './app/expeditions.rb'
 require './app/tableflip.rb'
@@ -61,7 +61,7 @@ bot.include! Countdown
 bot.include! PublicRoles
 bot.include! GravityCalculator
 bot.include! Admin
-# bot.include! Listing
+bot.include! Listing
 bot.include! BearingPlotter
 # bot.include! Expeditions
 bot.include! TableFlip
