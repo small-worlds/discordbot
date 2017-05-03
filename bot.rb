@@ -16,6 +16,9 @@ require './app/admin.rb'
 require './app/bearing_plotter.rb'
 # require './app/expeditions.rb'
 require './app/tableflip.rb'
+require './app/move.rb'
+
+
 
 settings = YAML.load_file('botconfig.yml')
 if settings['token'].nil? || settings['client_id'].nil?
@@ -62,4 +65,5 @@ bot.include! Admin
 bot.include! BearingPlotter
 # bot.include! Expeditions
 bot.include! TableFlip
+bot.include! Move
 bot.run
