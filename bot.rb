@@ -55,7 +55,7 @@ bot.include! MaxJumpCalculator
 bot.include! NoContext
 bot.include! Roleplay
 bot.include! Countdown
-# bot.include! PublicRoles
+bot.include! PublicRoles
 bot.include! GravityCalculator
 bot.include! Admin
 # bot.include! Listing
