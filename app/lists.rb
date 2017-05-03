@@ -4,19 +4,16 @@ module Listing
   wing_list = Array.new
   #The array that is wing_list is created.
 
-  def self.role?(event, role)
-    has_role = false
-    event.server.roles.each do |server_role|
-      next unless server_role.name == role
-      has_role = true
-      break
-    end
-    return has_role
-  end
-
   command :winglist, description: "Lists those who are requesting wing." do |event|
   #Simple, return the array's contents. Also, admin lock this.
-    break unless role?(event, 'wingcaptain') || role?(event, 'botadmin')
+    ok=nil
+    event.user.roles.each do |role|
+      if ["Management","Administration","wingcaptain","botadmin"].include?(role.name)
+        ok=1
+        break
+      end
+    end
+    break unless ok
     #Check to see if they have the "wingcaptain role"
     if wing_list.empty?
       event.respond "No one is currently in the wing."
@@ -28,14 +25,28 @@ module Listing
 
   command :wingremove, description: "Remove a person from the wing queue", min_args: 1, max_args: 1 do |event, target|
   #Remove someone who is on the wing list. Defo admin lock.
-    break unless event.user.role?(event, 'wingcaptain') || role?(event, 'botadmin')
+    ok=nil
+    event.user.roles.each do |role|
+      if ["Management","Administration","wingcaptain","botadmin"].include?(role.name)
+        ok=1
+        break
+      end
+    end
+    break unless ok
 	#Check to see if they have the "wingcaptain role" OR "botadmin" role.
     wing_list.delete(target)
     event.respond "Removed #{target} from the queue."
   end
 
   command :wingnuke, description: "Removes everything from the wing list. Useful for after a meetup." do |event|
-    break unless role?(event, 'wingcaptain') || role?(event, 'botadmin')
+    ok=nil
+    event.user.roles.each do |role|
+      if ["Management","Administration","wingcaptain","botadmin"].include?(role.name)
+        ok=1
+        break
+      end
+    end
+    break unless ok
 	#Check to see if they have the "wingcaptain" role OR "botadmin" role.
     wing_list.clear
     #will this actually work? I think no, but i can't think of a better way.
@@ -59,7 +70,14 @@ module Listing
 
   command :wingnext, description: "Displays the next in line, and tags them so they know about it. Also kicks them from the line." do |event|
   #prints top line of the text file, then removes it. Essentially shouting "Next"
-    break unless role?(event, 'wingcaptain') || role?(event, 'botadmin')
+    ok=nil
+    event.user.roles.each do |role|
+      if ["Management","Administration","wingcaptain","botadmin"].include?(role.name)
+        ok=1
+        break
+      end
+    end
+    break unless ok
 	#Check to see if they have the "wingcaptain" role OR "botadmin" role.
   
       #Save first value to tag_me
