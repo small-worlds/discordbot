@@ -71,4 +71,8 @@ module CustomCommands
     event << "Ravstar52's guide: https://goo.gl/dzUnWm \n"
     event << "Rosander's guide: https://goo.gl/MM6fDS"
   end
+  
+  command :code, description: "The github page for this bot's code." do |event|
+    event.respond "https://github.com/small-worlds/discordbot"
+  end
 end
