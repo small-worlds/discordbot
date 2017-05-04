@@ -1,0 +1,5 @@
+language: ruby
+
+script:
+- cp botconfig.yml.example botconfig.yml
+- bundle exec ruby bot.rb test
