@@ -45,7 +45,9 @@ bot = Discordrb::Commands::CommandBot.new token: settings['token'],
                                           client_id: settings['client_id'],
                                           prefix: settings['prefix_char'],
                                           advanced_functionality: false,
-                                          log_mode: log_mode
+                                          log_mode: log_mode,
+                                          command_doesnt_exist_message: "%command% is not a valid command! Use &help to get a list of current commands.",
+                                          no_permission_message: "Error! Insufficient permissions to use command."
 
 bot.bucket :memes, limit: 3, time_span: 60, delay: 10
 
