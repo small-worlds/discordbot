@@ -15,14 +15,14 @@ module Listing
     end
   end
 
-  command :wingremove, required_roles: [234099430897221632, 192084466410192897], description: "Remove a person from the wing queue", min_args: 1, max_args: 1 do |event, target|
-  #Remove someone who is on the wing list. Needs both admin and wingcaptain roles.
+  command :wingremove, required_roles: [192084466410192897], description: "Remove a person from the wing queue", min_args: 1, max_args: 1 do |event, target|
+  #Remove someone who is on the wing list. Needs admin role.
     wing_list.delete(target)
     event.respond "Removed #{target} from the queue."
   end
 
-  command :wingnuke, required_roles: [234099430897221632, 192084466410192897], description: "Removes everything from the wing list. Useful for after a meetup." do |event|
-  #Removes everyone from the wing list. Needs both admin and wingcaptain roles.
+  command :wingnuke, required_roles: [192084466410192897], description: "Removes everything from the wing list. Useful for after a meetup." do |event|
+  #Removes everyone from the wing list. Needs admin role.
     wing_list.clear
     #will this actually work? I think no, but it seems to for now.
     event.respond "As requested, the list has been nuked."
