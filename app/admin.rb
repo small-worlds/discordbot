@@ -4,10 +4,10 @@ module Admin
   extend Discordrb::Commands::CommandContainer
 
 ### This Should™ be no longer necessary with the new and improved role thing
-  def self.find_role(event, role)
+  def self.find_role(event, rolename)
     role = nil
     event.server.roles.each do |server_role|
-      next unless server_role.name == 'botadmin'
+      next unless server_role.name == rolename
       role = server_role
     end
     return role
