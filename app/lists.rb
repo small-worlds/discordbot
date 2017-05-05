@@ -4,7 +4,7 @@ module Listing
   wing_list = Array.new
   #The array that is wing_list is created.
 
-  command :winglist, description: "Lists those who are requesting wing." do |event|
+  command :winglist, description: "Lists those who are requesting wing." required_roles: ["wingcaptain"], do |event|
   #Simple, return the array's contents. Also, admin lock this.
     ok=nil
     event.user.roles.each do |role|
