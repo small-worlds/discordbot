@@ -68,4 +68,4 @@ bot.include! BearingPlotter
 # bot.include! Expeditions
 bot.include! TableFlip
 bot.include! Move
-bot.run
+bot.run unless ARGV[0] == "test"
