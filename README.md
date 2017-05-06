@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/small-worlds/discordbot.svg?branch=master)](https://travis-ci.org/small-worlds/discordbot)
+
 # Discordbot
 
 A [Discord](https://discordapp.com) bot, written in Ruby.
