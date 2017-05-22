@@ -26,7 +26,7 @@ module Move
     end
   end
   
-  command :mute, help_available: false, required_roles: [314411525513150464], min_args 1, max_args 1 do |event, dave|
+  command :mute, help_available: false, required_roles: [314411525513150464], min_args: 1, max_args: 1 do |event, dave|
     channel1=nil
     event.server.channels.each do |carl|
       if carl.name == dave and carl.voice?
