@@ -23,7 +23,6 @@ module Move
     event.respond 'Moving'
     channel1.users.each do |u|
       event.server.move(u,channel2)
-      sleep(0.01)
     end
   end
 end
