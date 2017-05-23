@@ -34,7 +34,7 @@ module Move
       end
     end
     event.respond "And there was silence in " << channel1.name
-    channel.users.each do |u|
+    channel1.users.each do |u|
       u.server_mute
       sleep(0.01)
     end
@@ -48,7 +48,7 @@ module Move
       end
     end
     event.respond "And the silence fades from " << channel1.name
-    channel.users.each do |u|
+    channel1.users.each do |u|
       u.server_unmute
       sleep(0.01)
     end
