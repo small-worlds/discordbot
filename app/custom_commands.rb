@@ -75,4 +75,11 @@ module CustomCommands
   command :code, description: "The github page for this bot's code." do |event|
     event.respond "https://github.com/small-worlds/discordbot"
   end
+  
+  command :convert, description: "Converts between Credits and SK units.", min_args: 1, max_args: 1 do |events, input|
+    dolphins = input/1300000
+    orca = input/1300000 * 0.028
+    beluga = input/1300000 * 0.015
+    event.respond "That's " << dolphins << " Dolphins, " << " Orcas, or " << beluga << "Belugas."
+  end
 end
