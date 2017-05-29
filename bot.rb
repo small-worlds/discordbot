@@ -51,6 +51,29 @@ bot = Discordrb::Commands::CommandBot.new token: settings['token'],
 
 bot.bucket :memes, limit: 3, time_span: 60, delay: 10
 
+  bot.reaction_add(emoji: 236127165010280458) do |event|
+    dave=nil
+    if event.message.id == 316293235700137984
+      dave=event.user.on(191725064155168770)
+      dave.add_role(308279505091559434)
+    end
+  end
+  
+  bot.reaction_add(emoji: 316295019097227264) do |event|
+    dave=nil
+    if event.message.id == 316293235700137984
+      dave=event.user.on(191725064155168770)
+      dave.add_role(308593158827278337)
+    end
+  end
+  
+  bot.reaction_add(emoji: 316295046704136202) do |event|
+    dave=nil
+    if event.message.id == 316293235700137984
+      dave=event.user.on(191725064155168770)
+      dave.add_role(214402788279582720)
+    end
+  end
 
 puts "Invite URL is #{bot.invite_url}"
 
