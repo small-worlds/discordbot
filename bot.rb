@@ -51,7 +51,6 @@ bot = Discordrb::Commands::CommandBot.new token: settings['token'],
 
 bot.bucket :memes, limit: 3, time_span: 60, delay: 10
 
-
 puts "Invite URL is #{bot.invite_url}"
 
 bot.include! CustomCommands
