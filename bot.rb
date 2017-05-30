@@ -17,6 +17,7 @@ require './app/bearing_plotter.rb'
 # require './app/expeditions.rb'
 require './app/tableflip.rb'
 require './app/move.rb'
+require './app/emoji_role.rb'
 
 
 
@@ -67,4 +68,5 @@ bot.include! BearingPlotter
 # bot.include! Expeditions
 bot.include! TableFlip
 bot.include! Move
+bot.include! EmojiRole
 bot.run unless ARGV[0] == "test"
