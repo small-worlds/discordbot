@@ -21,7 +21,7 @@ module EmojiRole
     candy=nil
     if event.message.id == 316293235700137984
       candy=event.user.on(191725064155168770)
-      candy.add_role(308279505091559434)
+      candy.add_role(214402788279582720)
     end
   end
 end
