@@ -17,6 +17,7 @@ require './app/bearing_plotter.rb'
 # require './app/expeditions.rb'
 require './app/tableflip.rb'
 require './app/move.rb'
+require './app/emoji_role.rb'
 
 
 
@@ -51,7 +52,6 @@ bot = Discordrb::Commands::CommandBot.new token: settings['token'],
 
 bot.bucket :memes, limit: 3, time_span: 60, delay: 10
 
-
 puts "Invite URL is #{bot.invite_url}"
 
 bot.include! CustomCommands
@@ -68,4 +68,5 @@ bot.include! BearingPlotter
 # bot.include! Expeditions
 bot.include! TableFlip
 bot.include! Move
+bot.include! EmojiRole
 bot.run unless ARGV[0] == "test"
