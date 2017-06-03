@@ -3,6 +3,9 @@ module Listing
 
   wing_list = Array.new
   #The array that is wing_list is created.
+  
+  wing_switch = true
+  #So we can turn &wingme on and off
 
   command :winglist, required_roles: [234099430897221632], description: "Lists those who are requesting wing." do |event|
     #Check to see if they have the "wingcaptain" role. Won't work for anyone else.
@@ -30,8 +33,10 @@ module Listing
 
   command :wingme, description: "Adds you to the wing queue" do |event|
   #Adds the person who used the command to wing_list.
-    break if event.channel.name.downcase == 'freetalk'
-	# Forces people to not use freetalk for wing requests.
+    break if wing_switch == false
+    #Turns the command on and off
+    break if event.channel.name.downcase != 'bot-abuse'
+    #Forces people to only use bot-abuse for wing requests.
     if wing_list.include?(event.user.name)
     #Check the user isn't spamming their name onto the list...
       event.respond "You're already on this list! Be patient!"
