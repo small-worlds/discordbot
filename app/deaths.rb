@@ -58,4 +58,18 @@ module Deaths
     event << "We have gone #{diff[:diff]} without an accident."
     event << "Most recent death: **#{name}** - #{death}"
   end
+
+  command :alldeaths, description: "Get all deaths for the expedition" do |event|
+    file = File.read('resources/alldeaths.json')
+    all_deaths = JSON.parse(file)
+
+    message = =['All deaths by time:']
+
+    deaths = all_deaths.sort_by { |time, death| time }
+    deaths.each do |time, death_info|
+      message.push "#{time}: #{death_info[:name]} - #{death_info[:reason]}"
+    end
+
+    event.user.pm(message.join("\n"))
+  end
 end
