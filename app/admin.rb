@@ -15,45 +15,6 @@ module Admin
     nil
   end
 
-### Disabling until we have an endpoint on the API for this.
-### Or not. It's a wanted command.
-  command :adddeath, required_roles: [314411525513150464], help_available: false do |event, *parse_string|
-  #looks for the `Administration` role
-    parse_string = parse_string.join(' ')
-    parse_string = parse_string.split('-', 2)
-    name = parse_string[0].gsub(/\s+$/, '')
-    reason = parse_string[1].chomp.gsub!(/^\s+/, '')
-    previous_deaths = File.read('resources/alldeaths.json')
-    all_deaths = JSON.parse(previous_deaths)
-
-    file = File.read('resources/lastdeath.json')
-    data_hash = JSON.parse(file)
-    count = data_hash['count'] + 1
-    time = Time.now.utc
-
-    all_deaths[time] = {
-      name: name,
-      reason: reason
-    }
-
-    temp_hash = {
-      'name' => name,
-      'reason' => reason,
-      'timestamp' => time,
-      'count' => count
-    }
-
-    File.open('resources/lastdeath.json', 'w+') do |f|
-      f.write(temp_hash.to_json)
-    end
-
-    File.open('resources/alldeaths.json', 'w+') do |f|
-      f.write(all_deaths.to_json)
-    end
-
-    "Womp womp. #{name} died at #{time} - #{reason}. New count: #{count}"
-  end
-
   command :membercount, required_roles: [314411525513150464], help_available: false do |event| #"help_available: false" hides it from the help command.
     event.server.member_count # this returns a numerical value for server population automagically.
   end
@@ -79,5 +40,10 @@ module Admin
     event.bot.stop #should "gracefully" stop the bot.
     pid = Process.exec('ruby bot.rb') #Spawn a copy of the bot's process.
     Process.detach pid #Kill the current one, switching to the new one automagically.
+  end
+
+  command :shutdown, required_roles: [314411525513150464], description: 'Stop the bot!' do |event|
+    event.respond "Blame #{event.user.name}, stopping the bot."
+    event.bot.stop
   end
 end
