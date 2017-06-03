@@ -57,7 +57,7 @@ module CustomCommands
     count = data_hash["count"]
     event << "SWE2 Death Count: **#{count}**"
     event << "We have gone #{diff[:diff]} without an accident."
-    event << "Most recent death: **#{name}** #{death}"
+    event << "Most recent death: **#{name}** - #{death}"
   end
 
   command :zalgo, description: "He comes", bucket: :memes, min_args: 1 do |event, *text|
