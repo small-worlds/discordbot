@@ -3,23 +3,21 @@ require 'discordrb'
 require 'yaml'
 
 # App files
-require './app/custom_commands.rb'
-require './app/voice.rb'
-require './app/max_jump.rb'
-require './app/context.rb'
-require './app/roleplay.rb'
-require './app/countdown.rb'
-require './app/roles.rb'
-require './app/gravity.rb'
 require './app/admin.rb'
-require './app/lists.rb'
 require './app/bearing_plotter.rb'
-# require './app/expeditions.rb'
-require './app/tableflip.rb'
-require './app/move.rb'
+require './app/context.rb'
+require './app/countdown.rb'
+require './app/custom_commands.rb'
+require './app/deaths.rb'
 require './app/emoji_role.rb'
-
-
+require './app/gravity.rb'
+require './app/lists.rb'
+require './app/max_jump.rb'
+require './app/move.rb'
+require './app/roleplay.rb'
+require './app/roles.rb'
+require './app/tableflip.rb'
+require './app/voice.rb'
 
 settings = YAML.load_file('botconfig.yml')
 if settings['token'].nil? || settings['client_id'].nil?
@@ -54,19 +52,20 @@ bot.bucket :memes, limit: 3, time_span: 60, delay: 10
 
 puts "Invite URL is #{bot.invite_url}"
 
-bot.include! CustomCommands
-bot.include! Voice
-bot.include! MaxJumpCalculator
-bot.include! NoContext
-bot.include! Roleplay
-bot.include! Countdown
-bot.include! PublicRoles
-bot.include! GravityCalculator
+# Load all bot modules
 bot.include! Admin
-bot.include! Listing
 bot.include! BearingPlotter
-# bot.include! Expeditions
-bot.include! TableFlip
-bot.include! Move
+bot.include! Countdown
+bot.include! CustomCommands
+bot.include! Deaths
 bot.include! EmojiRole
+bot.include! GravityCalculator
+bot.include! Listing
+bot.include! MaxJumpCalculator
+bot.include! Move
+bot.include! NoContext
+bot.include! PublicRoles
+bot.include! Roleplay
+bot.include! TableFlip
+bot.include! Voice
 bot.run unless ARGV[0] == "test"
