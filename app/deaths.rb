@@ -63,6 +63,8 @@ module Deaths
     file = File.read('resources/alldeaths.json')
     all_deaths = JSON.parse(file)
 
+    event.respond "Sending you a PM!"
+
     message = =['All deaths by time:']
 
     deaths = all_deaths.sort_by { |time, death| time }
