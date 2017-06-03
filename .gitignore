@@ -1,3 +1,4 @@
 audio/*.wav
 .DS_Store
 /botconfig.yml
+/resources/*.json

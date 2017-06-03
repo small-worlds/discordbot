@@ -82,3 +82,6 @@ DEPENDENCIES
   time_diff
   titleize
   zalgo
+
+BUNDLED WITH
+   1.12.5

@@ -23,21 +23,32 @@ module Admin
     parse_string = parse_string.split('-', 2)
     name = parse_string[0].gsub(/\s+$/, '')
     reason = parse_string[1].chomp.gsub!(/^\s+/, '')
+    previous_deaths = File.read('resources/alldeaths.json')
+    all_deaths = JSON.parse(previous_deaths)
 
     file = File.read('resources/lastdeath.json')
-    data_hash= JSON.parse(file)
+    data_hash = JSON.parse(file)
     count = data_hash['count'] + 1
     time = Time.now.utc
 
+    all_deaths[time] = {
+      name: name,
+      reason: reason
+    }
+
     temp_hash = {
-        'name' => name,
-        'reason' => reason,
-        'timestamp' => time,
-        'count' => count
+      'name' => name,
+      'reason' => reason,
+      'timestamp' => time,
+      'count' => count
     }
 
     File.open('resources/lastdeath.json', 'w+') do |f|
       f.write(temp_hash.to_json)
+    end
+
+    File.open('resources/alldeaths.json', 'w+') do |f|
+      f.write(all_deaths.to_json)
     end
 
     "Womp womp. #{name} died at #{time} - #{reason}. New count: #{count}"
