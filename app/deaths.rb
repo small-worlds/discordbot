@@ -65,11 +65,11 @@ module Deaths
 
     event.respond "Sending you a PM!"
 
-    message = =['All deaths by time:']
+    message = ['All deaths by time:']
 
     deaths = all_deaths.sort_by { |time, death| time }
     deaths.each do |time, death_info|
-      message.push "#{time}: #{death_info[:name]} - #{death_info[:reason]}"
+      message.push "#{time}: #{death_info['name']} - #{death_info['reason']}"
     end
 
     event.user.pm(message.join("\n"))

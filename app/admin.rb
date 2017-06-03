@@ -41,4 +41,9 @@ module Admin
     pid = Process.exec('ruby bot.rb') #Spawn a copy of the bot's process.
     Process.detach pid #Kill the current one, switching to the new one automagically.
   end
+
+  command :shutdown, required_roles: [314411525513150464], description: 'Stop the bot!' do |event|
+    event.respond "Blame #{event.user.name}, stopping the bot."
+    event.bot.stop
+  end
 end
