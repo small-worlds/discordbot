@@ -55,9 +55,9 @@ module CustomCommands
     name = data_hash["name"]
     death = data_hash["reason"]
     count = data_hash["count"]
-    event << "HWCC Death Count: **#{count}**"
+    event << "SWE2 Death Count: **#{count}**"
     event << "We have gone #{diff[:diff]} without an accident."
-    event << "Most recent death: **#{name}** #{death}"
+    event << "Most recent death: **#{name}** - #{death}"
   end
 
   command :zalgo, description: "He comes", bucket: :memes, min_args: 1 do |event, *text|
@@ -71,11 +71,11 @@ module CustomCommands
     event << "Ravstar52's guide: https://goo.gl/dzUnWm \n"
     event << "Rosander's guide: https://goo.gl/MM6fDS"
   end
-  
+
   command :code, description: "The github page for this bot's code." do |event|
     event.respond "https://github.com/small-worlds/discordbot"
   end
-  
+
   command :convert, description: "Converts between Credits and SK units.", min_args: 1, max_args: 1 do |events, input|
     dolphins = input/1300000
     orca = input/1300000 * 0.028
