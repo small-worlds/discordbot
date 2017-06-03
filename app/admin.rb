@@ -37,10 +37,10 @@ module Admin
     }
 
     temp_hash = {
-      'name' => name,
-      'reason' => reason,
-      'timestamp' => time,
-      'count' => count
+      name: name,
+      reason: reason,
+      timestamp: time,
+      count: count
     }
 
     File.open('resources/lastdeath.json', 'w+') do |f|
