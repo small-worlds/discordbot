@@ -1,7 +1,8 @@
 module Move
   extend Discordrb::Commands::CommandContainer
+  extend Roles
 
-  command :move, help_available: false, required_roles: [314411525513150464], min_args: 2, max_args: 2 do |event, c1, c2|
+  command :move, help_available: false, required_roles: [Roles::Operators], min_args: 2, max_args: 2 do |event, c1, c2|
     channel1=nil
     channel2=nil
     event.server.channels.each do |c|
@@ -26,7 +27,7 @@ module Move
     end
   end
   
-  command :mute, help_available: false, required_roles: [314411525513150464], min_args: 1, max_args: 1 do |event, dave|
+  command :mute, help_available: false, required_roles: [Roles::Operators], min_args: 1, max_args: 1 do |event, dave|
     channel1=nil
     event.server.channels.each do |carl|
       if carl.name == dave and carl.voice?
@@ -40,7 +41,7 @@ module Move
     end
   end
   
-  command :unmute, help_available: false, required_roles: [314411525513150464], min_args: 1, max_args: 1 do |event, dave|
+  command :unmute, help_available: false, required_roles: [Roles::Operators], min_args: 1, max_args: 1 do |event, dave|
     channel1=nil
     event.server.channels.each do |carl|
       if carl.name == dave and carl.voice?

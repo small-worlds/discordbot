@@ -2,6 +2,9 @@
 require 'discordrb'
 require 'yaml'
 
+# Constants
+require './rolesconfig.rb'
+
 # App files
 require './app/admin.rb'
 require './app/bearing_plotter.rb'

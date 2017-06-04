@@ -1,0 +1,5 @@
+module Roles
+  Operators=314411525513150464
+  Botadmin=227522979104292864
+  WingHelper=234099430897221632
+end

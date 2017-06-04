@@ -1,5 +1,6 @@
 module Listing
   extend Discordrb::Commands::CommandContainer
+  extend Roles
 
   wing_list = Array.new
   # The array that is wing_list is created.
@@ -7,9 +8,9 @@ module Listing
   wing_switch = true
   # So we can turn &wingme on and off
 
-  command :winglist, required_roles: [234099430897221632], description: "Lists those who are requesting wing." do |event|
-    # Check to see if they have the "wingcaptain" role. Won't work for anyone else.
-    # Simple, return the array's contents.
+  command :winglist, required_roles: [Roles::WingHelper], description: "Lists those who are requesting wing." do |event|
+    # Check to see if they have the "winghelper" role. Won't work for anyone else.
+    # Returns the array's contents.
     if wing_list.empty?
       event.respond "No one is currently in the wing."
     else
@@ -17,15 +18,15 @@ module Listing
       # Why do I have the feeling this will barf data unintelligibly?
     end
   end
-
-  command :wingremove, required_roles: [314411525513150464], description: "Remove a person from the wing queue", min_args: 1, max_args: 1 do |event, target|
-  # Remove someone who is on the wing list. Needs admin role.
+  
+  command :wingremove, required_roles: [Roles::Operators], description: "Remove a person from the wing queue", min_args: 1, max_args: 1 do |event, target|
+  # Remove someone who is on the wing list. Needs operator role.
     wing_list.delete(target)
     event.respond "Removed #{target} from the queue."
   end
 
-  command :wingnuke, required_roles: [314411525513150464], description: "Removes everything from the wing list. Useful for after a meetup." do |event|
-  # Removes everyone from the wing list. Needs admin role.
+  command :wingnuke, required_roles: [Roles::Operators], description: "Removes everything from the wing list. Useful for after a meetup." do |event|
+  # Removes everyone from the wing list. Needs operator role.
     wing_list.clear
     # will this actually work? I think no, but it seems to for now.
     event.respond "As requested, the list has been nuked."
@@ -52,7 +53,7 @@ module Listing
     end
   end
 
-  command :wingnext, required_roles: [234099430897221632], description: "Displays the next in line, and tags them so they know about it. Also kicks them from the line." do |event|
+  command :wingnext, required_roles: [Roles::WingHelper], description: "Displays the next in line, and tags them so they know about it. Also kicks them from the line." do |event|
   # prints top line of the text file, then removes it. Essentially shouting "Next"
       # Save first value to tag_me
       tag_me = wing_list.shift
