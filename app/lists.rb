@@ -72,7 +72,7 @@ module Listing
       event.respond "#{tag_me.mention} needs a wing."
     end
   
-  command :wingswitch, required_roles: [314411525513150464] do |event|
+  command :wingswitch, required_roles: [Roles::Operators] do |event|
     event.respond "Bot accepting &wingme?"
     wing_switch = !wing_switch
   end
