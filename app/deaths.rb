@@ -4,10 +4,11 @@ require 'json'
 
 module Deaths
   extend Discordrb::Commands::CommandContainer
+  extend Roles
 
   # looks for the `Operators` role.
   # TODO: move required role to config.
-  command :adddeath, required_roles: [314411525513150464], help_available: false do |event, *parse_string|
+  command :adddeath, required_roles: [Roles::Operators], help_available: false do |event, *parse_string|
     parse_string = parse_string.join(' ')
     parse_string = parse_string.split('-', 2)
     name = parse_string[0].gsub(/\s+$/, '')
