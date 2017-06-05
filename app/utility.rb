@@ -4,18 +4,10 @@ module Utility
   Swebotoutput = 321347260099198986 #swebot-output
 
   member_join do |event|
-    event.server.channels.each do |ch|
-      if ch.id == Swebotoutput
-        ch.send(event.user.username + " joined the server")
-      end
-    end
+    bot.send(Swebotoutput, event.user.username + " joined the server")
   end
   
   member_leave do |event|
-    event.server.channels.each do |ch|
-      if ch.id == Swebotoutput
-        ch.send(event.user.username + " left the server")
-      end
-    end
+    bot.send(Swebotoutput, event.user.username + " left the server")
   end
 end
