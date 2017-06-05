@@ -2,40 +2,33 @@ module Utility
   extend Discordrb::EventContainer
   
   member_join do |event|
-    channel12 = nil
+    channel1 = nil
     # Object
-    channel13 = 321347260099198986
-    # Interger
+    channel2 = 321347260099198986
+    # Integer
     output = event.user.username + " joined the server"
     # Output message
-    event.server.channels.each do |carl|
+    event.server.channels.each do |event|
     # For each of the channels on this server, do the following:
-      if carl.id == channel13
-      # Does it's id match channel13's?
-        channel12 = carl
-        # If so, give the object to channel12
+      if event.id == channel2
+      # Does it's id match channel2's?
+        channel1 = event
+        # If so, give the object to channel1
       end
     end
-    channel12.send(output)
-    # Send the contents of output to channel12 
+    channel1.send(output)
+    # Send the contents of output to channel1 
   end
   
   member_leave do |event|
-    channel14 = nil
-    # Object
-    channel15 = 321347260099198986
-    # Interger
+    channel1 = nil
+    channel2 = 321347260099198986
     output = event.user.username + " left the server"
-    # Output message
-    event.server.channels.each do |carl|
-    # For each of the channels on this server, do the following:
-      if carl.id == channel15
-      # Does it's id match channel15's?
-        channel14 = carl
-        # If so, give the object to channel14
+    event.server.channels.each do |event|
+      if event.id == channel2
+        channel1 = event
       end
     end
-    channel14.send(output)
-    # Send the contents of output to channel14 
+    channel1.send(output)
   end
 end
