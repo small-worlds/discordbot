@@ -1,27 +1,29 @@
 module EmojiRole
   extend Discordrb::EventContainer
+  extend Roles
+  extend Emojis
   
-  reaction_add(emoji: 236127165010280458) do |event|
+  # Message id we're looking for
+  messageid=316293235700137984
+  
+  reaction_add(emoji: [Emojis::small_worlds]) do |event|
     alice=nil
-    if event.message.id == 316293235700137984
-      alice=event.user.on(191725064155168770)
-      alice.add_role(308279505091559434)
+    if event.message.id == messageid
+      alice=event.author.add_role(Roles::SWE2)
     end
   end
   
-  reaction_add(emoji: 316295019097227264) do |event|
+  reaction_add(emoji: [Emojis::small_worlds_xbox]) do |event|
     barry=nil
-    if event.message.id == 316293235700137984
-      barry=event.user.on(191725064155168770)
-      barry.add_role(308593158827278337)
+    if event.message.id == messageid
+      barry=event.author.add_role(Roles::SWE2Xbox)
     end
   end
   
-  reaction_add(emoji: 316295046704136202) do |event|
+  reaction_add(emoji: [Emojis::roleplayers]) do |event|
     candy=nil
-    if event.message.id == 316293235700137984
-      candy=event.user.on(191725064155168770)
-      candy.add_role(214402788279582720)
+    if event.message.id == messageid
+      candy=event.author.add_role(Roles::Roleplayers)
     end
   end
 end
