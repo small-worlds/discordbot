@@ -10,11 +10,11 @@ module EmojiRole
     alice=nil
     if event.message.id == messageid
       alice=event.user.on(191725064155168770)
-      alice.add_role(Roles::SmallWorlds2)
+      alice.add_role(Roles::SWE2)
     end
   end
   
-  reaction_add(emoji: [Emojis::small_worlds_xbox]) do |event|
+  reaction_add(emoji: [Emojis::xbox]) do |event|
     barry=nil
     if event.message.id == messageid
       barry=event.user.on(191725064155168770)
@@ -22,7 +22,7 @@ module EmojiRole
     end
   end
   
-  reaction_add(emoji: 316295046704136202) do |event|
+  reaction_add(emoji: [Emojis::roleplayers]) do |event|
     candy=nil
     if event.message.id == messageid
       candy=event.user.on(191725064155168770)
@@ -30,4 +30,3 @@ module EmojiRole
     end
   end
 end
-Roles::Roleplayers

@@ -10,6 +10,6 @@ end
 
 module Emojis
   small_worlds = 236127165010280458
-  small_worlds_xbox = 316295019097227264
+  xbox = 316295019097227264
   roleplayers = 316295046704136202
 end
