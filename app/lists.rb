@@ -68,7 +68,7 @@ module Listing
 
       # Find the member object associated with the member. We could probably do this more gracefully.
       event.server.members.each do |member|
-        next unless member.username == tag_me
+        next unless member.display_name == tag_me
         tag_me = member
         break
       end
