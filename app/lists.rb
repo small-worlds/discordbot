@@ -12,7 +12,7 @@ module Listing
     # Check to see if they have the "winghelper" role. Won't work for anyone else.
     # Returns the array's contents.
     if wing_list.empty?
-      event.respond "No one is currently in the wing."
+      event.respond "No one is currently in the waiting list."
     else
       event.respond "\n" + wing_list.join("\n")
       # Why do I have the feeling this will barf data unintelligibly?
