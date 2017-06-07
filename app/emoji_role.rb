@@ -6,7 +6,7 @@ module EmojiRole
   # Message id we're looking for
   messageid=316293235700137984
   
-  reaction_add(emoji: [Emojis::small_worlds]) do |event|
+  reaction_add(emoji: [Emojis::SMALL_WORLDS]) do |event|
     alice=nil
     if event.message.id == messageid
       alice=event.user.on(191725064155168770)
@@ -14,7 +14,7 @@ module EmojiRole
     end
   end
   
-  reaction_add(emoji: [Emojis::xbox]) do |event|
+  reaction_add(emoji: [Emojis::XBOX]) do |event|
     barry=nil
     if event.message.id == messageid
       barry=event.user.on(191725064155168770)
@@ -22,7 +22,7 @@ module EmojiRole
     end
   end
   
-  reaction_add(emoji: [Emojis::roleplayers]) do |event|
+  reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
     candy=nil
     if event.message.id == messageid
       candy=event.user.on(191725064155168770)
