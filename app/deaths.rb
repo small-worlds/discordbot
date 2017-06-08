@@ -73,8 +73,6 @@ module Deaths
       message.push "#{time}: #{death_info['name']} - #{death_info['reason']}"
     end
 
-    puts message.length
-
     message.each_slice(10) do |message_lines|
       event.user.pm(message_lines.join("\n"))
     end
