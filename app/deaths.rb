@@ -78,7 +78,5 @@ module Deaths
     message.each_slice(10) do |message_lines|
       event.user.pm(message_lines.join("\n"))
     end
-
-    event.user.pm(message.join("\n"))
   end
 end
