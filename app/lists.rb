@@ -60,22 +60,22 @@ module Listing
 
   command :wingnext, required_roles: [Roles::WingHelper], description: "Displays the next in line, and tags them so they know about it. Also kicks them from the line." do |event|
   # prints top line of the text file, then removes it. Essentially shouting "Next"
-      # Save first value to tag_me
-      tag_me = wing_list.shift
-      if tag_me.nil?
-        event.respond "There is currently no waiting list."
-      end
-
+    # Save first value to tag_me
+    tag_me = wing_list.shift
+    if tag_me.nil?
+      event.respond "There is currently no waiting list."
+      break
+    else
       # Find the member object associated with the member. We could probably do this more gracefully.
       event.server.members.each do |member|
         next unless member.display_name == tag_me
         tag_me = member
         break
       end
-
-      wing_list.uniq!
-      event.respond "#{tag_me.mention} needs a wing."
     end
+    wing_list.uniq!
+    event.respond "#{tag_me.mention} needs a wing."
+  end
   
   command :wingswitch, required_roles: [Roles::Operators] do |event|
     event.respond "Bot accepting &wingme?"
