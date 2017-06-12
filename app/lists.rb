@@ -14,7 +14,7 @@ module Listing
     if wing_list.empty?
       event.respond "No one is currently in the waiting list."
     else
-      response = nil
+      response = String.new
       wing_list.each do |f|
         # Why do I have the feeling this will barf data unintelligibly?
         response << f.display_name + "\n"
