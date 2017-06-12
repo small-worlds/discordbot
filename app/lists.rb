@@ -14,7 +14,7 @@ module Listing
     if wing_list.empty?
       event.respond "No one is currently in the waiting list."
     else
-      event.respond "\n" + wing_list.join("\n")
+      event.respond "\n" + wing_list.display_name.join("\n")
       # Why do I have the feeling this will barf data unintelligibly?
     end
   end
@@ -26,7 +26,7 @@ module Listing
   end
   
   command :wingcancel, description: "Removes the user from the waiting list." do |event|
-    wing_list.delete(event.author.display_name)
+    wing_list.delete(event.author)
     event.respond "You have been removed from the waiting list."
   end
 
@@ -46,12 +46,12 @@ module Listing
     else
       break if event.channel.name.downcase != 'bot-abuse'
       # Forces people to only use bot-abuse for wing requests.
-      if wing_list.include?(event.author.display_name)
+      if wing_list.include?(event.author)
       # Check the user isn't spamming their name onto the list...
         event.respond "You're already on this list! Be patient!"
         # ...and tell them off for it.
       else
-        wing_list << event.author.display_name
+        wing_list << event.author
         # Find the user who typed &WingMe and add their nickname to the array-list.
         event.respond "Added to the Wing request waiting list."
       end
@@ -65,13 +65,6 @@ module Listing
     if tag_me.nil?
       event.respond "There is currently no waiting list."
       break
-    else
-      # Find the member object associated with the member. We could probably do this more gracefully.
-      event.server.members.each do |member|
-        next unless member.display_name == tag_me
-        tag_me = member
-        break
-      end
     end
     wing_list.uniq!
     event.respond "#{tag_me.mention} needs a wing."
