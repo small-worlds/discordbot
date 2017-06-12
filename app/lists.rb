@@ -14,8 +14,11 @@ module Listing
     if wing_list.empty?
       event.respond "No one is currently in the waiting list."
     else
-      event.respond "\n" + wing_list.display_name.join("\n")
-      # Why do I have the feeling this will barf data unintelligibly?
+      wing_list.each do |f|
+        # Why do I have the feeling this will barf data unintelligibly?
+        response << f.display_name + "\n"
+      end
+      event.respond response
     end
   end
   
