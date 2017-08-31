@@ -6,6 +6,7 @@ module Roles
   SWE2Xbox=308593158827278337
   Roleplayers=214402788279582720
   Dunce=311293215930056705
+  Voice=352884100715249664
 end
 
 module Emojis
@@ -16,4 +17,12 @@ end
 
 module Message
   MESSAGEID = 316293235700137984
+end
+
+module Server
+  Server = 191725064155168770
+end
+
+module Channel
+  Swebotoutput = 321347260099198986 #swebot-output
 end
