@@ -63,4 +63,8 @@ module CustomCommands
     beluga = input/1300000 * 0.015
     event.respond "That's " << dolphins << " Dolphins, " << " Orcas, or " << beluga << "Belugas."
   end
+  
+  command :swe3 do |event|
+    event.respond "It's on the List™"
+  end
 end
