@@ -14,9 +14,9 @@ module Utility
 
   voice_state_update do |event|
     idiot = event.user.on(Server::Server)
-    if idiot.role?(Roles::Voice)
+    if idiot.voice_channel == nil && idiot.role?(Roles::Voice)
       idiot.remove_role(Roles::Voice)
-    else
+    elsif idiot.voice_channel != nil && idiot.role?(Roles::Voice) == false
       idiot.add_role(Roles::Voice)
     end
   end
