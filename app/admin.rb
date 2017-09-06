@@ -47,4 +47,20 @@ module Admin
     event.respond "Blame #{event.user.name}, stopping the bot."
     event.bot.stop
   end
+  
+  command :dunce, required_roles: [Roles::Operators], description: 'Handing out dunce hats.', min_args: 1, max_args: 1 do |event, target|
+    targeted = target.delete! '<@>'
+      dave = event.server.member(targeted)
+      response = String.new
+    if dave.roles == []
+      response = "No roles"
+    else
+      dave.roles.each do |f|
+        response << f.name
+        response << ", "
+      end
+    end
+    event.respond response
+    dave.roles=Roles::Dunce
+  end
 end
