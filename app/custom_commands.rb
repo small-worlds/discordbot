@@ -70,4 +70,5 @@ module CustomCommands
   
   command :summon do |event|
     event.respond "https://youtu.be/_TrQ5pA1azo"
+  end
 end
