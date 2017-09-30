@@ -28,4 +28,12 @@ module EmojiRole
       candy.add_role(Roles::Roleplayers)
     end
   end
+  
+  reaction_add(emoji: [Emojis::ONIONHEAD]) do |event|
+    delta=nil
+    if event.message.id == Message::MESSAGEID
+      delta=event.user.on(Server::Server)
+      delta.add_role(Roles::Jerek)
+    end
+  end
 end
