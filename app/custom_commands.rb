@@ -69,6 +69,5 @@ module CustomCommands
   end
   
   command :summon do |event|
-    event.respond "https://www.youtube.com/edit?o=U&video_id=_TrQ5pA1azo"
-  end
+    event.respond "https://youtu.be/_TrQ5pA1azo"
 end
