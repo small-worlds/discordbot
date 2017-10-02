@@ -67,4 +67,8 @@ module CustomCommands
   command :swe3 do |event|
     event.respond "It's on the List™"
   end
+  
+  command :summon do |event|
+    event.respond "https://youtu.be/_TrQ5pA1azo"
+  end
 end
