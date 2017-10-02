@@ -63,6 +63,7 @@ module Admin
     end
     event.respond response
     dave.roles=Roles::Dunce
+    sleep(1)
     event.server.move(dave, Channel::Corner)
   end
 end
