@@ -3,6 +3,7 @@ require 'json'
 module Admin
   extend Discordrb::Commands::CommandContainer
   extend Roles
+  extend Channel
 
   command :updateprofile, required_roles: [Roles::Botadmin], help_available: false do |event|
   #Looks for the `botadmin` role
@@ -62,5 +63,6 @@ module Admin
     end
     event.respond response
     dave.roles=Roles::Dunce
+    event.server.move(dave, Channel::Corner)
   end
 end
