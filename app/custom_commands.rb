@@ -71,4 +71,8 @@ module CustomCommands
   command :summon do |event|
     event.respond "https://youtu.be/_TrQ5pA1azo"
   end
+  
+  command :hangin do |event|
+    event.respond "https://cdn.discordapp.com/attachments/363726157310328833/367439918500151296/my-hell.png"
+  end
 end
