@@ -4,6 +4,10 @@ module CustomCommands
   extend Discordrb::Commands::CommandContainer
 
   memes = {
+    aaaa: [
+      "https://cdn.discordapp.com/attachments/363726157310328833/369951053703151626/aaaaaaaaaaaaa.jpg",
+      "https://cdn.discordapp.com/attachments/363726157310328833/369955470531624970/20170901_173400.jpg"
+    ],
     ayy: "https://cdn.drawception.com/images/panels/2015/6-16/xQfqepw73p-2.png",
     banned: "http://i.imgur.com/O3DHIA5.gif",
     braben: [
@@ -63,15 +67,15 @@ module CustomCommands
     beluga = input/1300000 * 0.015
     event.respond "That's " << dolphins << " Dolphins, " << " Orcas, or " << beluga << "Belugas."
   end
-  
+
   command :swe3 do |event|
     event.respond "It's on the List™"
   end
-  
+
   command :summon do |event|
     event.respond "https://youtu.be/_TrQ5pA1azo"
   end
-  
+
   command :hangin do |event|
     event.respond "https://cdn.discordapp.com/attachments/363726157310328833/367439918500151296/my-hell.png"
   end
