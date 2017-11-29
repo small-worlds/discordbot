@@ -8,6 +8,7 @@ module PublicRoles
     'Roleplayers',
     'Small Worlds 2',
     'Small Worlds 2 Xbox'
+    'Flight Club'
   ]
 
   command :role, description: "Add or remove a public role on yourself",

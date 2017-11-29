@@ -36,4 +36,12 @@ module EmojiRole
       delta.add_role(Roles::Jerek)
     end
   end
+  
+  reaction_add(emoji: [EmojiRole::PLANE]) do |event|
+    ecchi=nil
+    if event.message.id == Message::MESSAGEID
+      ecchi=event.user.on(Server::Server)
+      ecchi.add_role(Roles::FlightClub)
+    end
+  end
 end
