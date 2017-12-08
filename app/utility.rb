@@ -20,4 +20,11 @@ module Utility
       idiot.add_role(Roles::Voice)
     end
   end
+  
+  message(contains: <@!114144783739518981>) do |event|
+    event.message.author = alpha
+    alpha.pm("Stop that")
+    event.message.channel = beta
+    beta.send "#{alpha.mention} Please don't do that"
+  end
 end
