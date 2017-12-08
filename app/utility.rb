@@ -25,9 +25,9 @@ module Utility
 ##    user = event.message.mentions.at(0)
 ##    if user.id == 114144783739518981
 ##    if user.id == 118017724537503751
-      event.message.author = alpha
+      alpha = event.author
       alpha.pm("Stop that")
-      event.message.channel = beta
+      beta = event.channel
       beta.send "#{alpha.mention} Please don't do that"
 ##      break
 ##    else
