@@ -37,7 +37,7 @@ module EmojiRole
     end
   end
   
-  reaction_add(emoji: [EmojiRole::PLANE]) do |event|
+  reaction_add(emoji: [Emojis::PLANE]) do |event|
     ecchi=nil
     if event.message.id == Message::MESSAGEID
       ecchi=event.user.on(Server::Server)
