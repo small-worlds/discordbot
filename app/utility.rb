@@ -21,17 +21,17 @@ module Utility
     end
   end
   
-  message do |event|
-    user = event.message.mentions.at(0)
+  message(contains: "@CMDR ravstar52") do |event|
+##    user = event.message.mentions.at(0)
 ##    if user.id == 114144783739518981
-    if user.id == 118017724537503751
+##    if user.id == 118017724537503751
       event.message.author = alpha
       alpha.pm("Stop that")
       event.message.channel = beta
       beta.send "#{alpha.mention} Please don't do that"
-      break
-    else
-      user = nil
-    end
+##      break
+##    else
+##      user = nil
+##    end
   end
 end
