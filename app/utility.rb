@@ -21,7 +21,7 @@ module Utility
     end
   end
   
-  message(contains: <@!114144783739518981>) do |event|
+  message(contains: 114144783739518981) do |event|
     event.message.author = alpha
     alpha.pm("Stop that")
     event.message.channel = beta
