@@ -22,7 +22,7 @@ module Utility
   end
   
   message do |event|
-    event.message.mentions.at(0) = user
+    user = event.message.mentions.at(0)
 ##    if user.id == 114144783739518981
     if user.id == 118017724537503751
       event.message.author = alpha
