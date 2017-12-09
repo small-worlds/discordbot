@@ -3,7 +3,7 @@ module Utility
   extend Roles
   extend Server
   extend Channel
-  extend PeopleID
+  extend People
 
   member_join do |event|
     event.bot.send_message(Channel::Swebotoutput, event.user.username + " joined the server")
@@ -21,34 +21,11 @@ module Utility
       idiot.add_role(Roles::Voice)
     end
   end
-  
-##  message(contains: ([<\b]+[@!]+[\d]{18}[>\b])) do |event|
-##    user = event.message.mentions
-##    fuser = user[0]
-##    if user.id == 114144783739518981
-##    if user.id == 118017724537503751
-##      alpha = event.author
-##      alpha.pm("Stop that")
-##      beta = event.channel
-##      beta.send "#{alpha.mention} Please don't do that"
-##      break
-##    else
-##      user = nil
-##    end
-##  end
 
-  message(contains: '@!118017724537503751') do |event|
-##    user = event.message.mentions
-##    fuser = user[0]
-##    if user.id == 114144783739518981
-##    if user.id == 118017724537503751
-      alpha = event.author
-      alpha.pm("Stop that")
-      beta = event.channel
-      beta.send "#{alpha.mention} Please don't do that"
-##      break
-##    else
-##      user = nil
-##    end
+  message(contains: People::Ravstar) do |event|
+    alpha = event.author
+    alpha.pm("Stop that, #{event.message.mentions} doesn't like pings.")
+    beta = event.channel
+    beta.send "#{alpha.mention} Please don't ping them."
   end
 end

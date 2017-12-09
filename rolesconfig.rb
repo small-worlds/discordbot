@@ -32,10 +32,10 @@ module Channel
   Corner = 310950970433732618
 end
 
-##module People
-##  Nuse = <@!114144783739518981>
-##  Ravstar = 
-##end
+module People
+ Nuse = '<@!114144783739518981>'
+ Ravstar = '<@!118017724537503751>'
+end
 
 module PeopleID
   Nuse = 114144783739518981
