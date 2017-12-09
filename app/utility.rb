@@ -3,6 +3,7 @@ module Utility
   extend Roles
   extend Server
   extend Channel
+  extend PeopleID
 
   member_join do |event|
     event.bot.send_message(Channel::Swebotoutput, event.user.username + " joined the server")
@@ -21,8 +22,24 @@ module Utility
     end
   end
   
-  message(contains: "@CMDR ravstar52") do |event|
-##    user = event.message.mentions.at(0)
+##  message(contains: ([<\b]+[@!]+[\d]{18}[>\b])) do |event|
+##    user = event.message.mentions
+##    fuser = user[0]
+##    if user.id == 114144783739518981
+##    if user.id == 118017724537503751
+##      alpha = event.author
+##      alpha.pm("Stop that")
+##      beta = event.channel
+##      beta.send "#{alpha.mention} Please don't do that"
+##      break
+##    else
+##      user = nil
+##    end
+##  end
+
+  message(contains: '@!118017724537503751') do |event|
+##    user = event.message.mentions
+##    fuser = user[0]
 ##    if user.id == 114144783739518981
 ##    if user.id == 118017724537503751
       alpha = event.author
