@@ -3,6 +3,7 @@ require 'json'
 module Admin
   extend Discordrb::Commands::CommandContainer
   extend Roles
+  extend Channel
 
   command :updateprofile, required_roles: [Roles::Botadmin], help_available: false do |event|
   #Looks for the `botadmin` role
@@ -46,5 +47,23 @@ module Admin
   command :shutdown, required_roles: [Roles::Operators], description: 'Stop the bot!' do |event|
     event.respond "Blame #{event.user.name}, stopping the bot."
     event.bot.stop
+  end
+  
+  command :dunce, required_roles: [Roles::Operators], description: 'Handing out dunce hats.', min_args: 1, max_args: 1 do |event, target|
+    targeted = target.delete! '<@>'
+      dave = event.server.member(targeted)
+      response = String.new
+    if dave.roles == []
+      response = "No roles"
+    else
+      dave.roles.each do |f|
+        response << f.name
+        response << ", "
+      end
+    end
+    event.respond response
+    dave.roles=Roles::Dunce
+    sleep(1)
+    event.server.move(dave, Channel::Corner)
   end
 end
