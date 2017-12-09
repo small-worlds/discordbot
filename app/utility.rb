@@ -22,10 +22,10 @@ module Utility
     end
   end
 
-  message(contains: People::Ravstar) do |event|
+  message(contains: People::Nuse) do |event|
     alpha = event.author
-    alpha.pm("Stop that, #{event.message.mentions} doesn't like pings.")
+    alpha.pm("Stop that, Nuse doesn't like pings.")
     beta = event.channel
-    beta.send "#{alpha.mention} Please don't ping them."
+    beta.send "#{alpha.mention} Please don't ping Nuse."
   end
 end
