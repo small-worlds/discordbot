@@ -44,4 +44,12 @@ module EmojiRole
       ecchi.add_role(Roles::FlightClub)
     end
   end
+  
+  reaction_add(emoji: [Emojis::STARCITIZEN]) do |event|
+    foxtrot=nil
+    if event.message.id == Message::MESSAGEID
+      foxtrot=event.user.on(Server::Server)
+      foxtrot.add_role(Roles::StarCitizen)
+    end
+  end
 end
