@@ -72,7 +72,7 @@ module Admin
     if NusePing::NusePing == 0
       NusePing::NusePing = 1
       event.respond "Nuse may be pinged"
-    else if NusePing::NusePing == 1
+    elsif NusePing::NusePing == 1
       NusePing::NusePing =0
       event.respond "Nuse may not be pinged"
     end
