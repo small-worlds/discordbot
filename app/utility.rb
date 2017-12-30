@@ -4,6 +4,7 @@ module Utility
   extend Server
   extend Channel
   extend People
+  extend NusePing
 
   member_join do |event|
     event.bot.send_message(Channel::Swebotoutput, event.user.username + " joined the server")
@@ -23,9 +24,11 @@ module Utility
   end
 
   message(contains: People::Nuse) do |event|
-    alpha = event.author
-    alpha.pm("Stop that, Nuse doesn't like pings.")
-    beta = event.channel
-    beta.send "#{alpha.mention} Please don't ping Nuse."
+    if NusePing::NusePing == 0
+      alpha = event.author
+      alpha.pm("Stop that, Nuse doesn't like pings.")
+      beta = event.channel
+      beta.send "#{alpha.mention} Please don't ping Nuse."
+    end
   end
 end

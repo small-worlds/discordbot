@@ -44,3 +44,6 @@ module PeopleID
   Ravstar = 118017724537503751
 end
 
+module NusePing
+  NusePing = 1
+end

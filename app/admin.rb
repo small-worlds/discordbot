@@ -4,6 +4,7 @@ module Admin
   extend Discordrb::Commands::CommandContainer
   extend Roles
   extend Channel
+  extend NusePing
 
   command :updateprofile, required_roles: [Roles::Botadmin], help_available: false do |event|
   #Looks for the `botadmin` role
@@ -66,4 +67,15 @@ module Admin
     sleep(1)
     event.server.move(dave, Channel::Corner)
   end
+  
+  command :nuse, required_roles: [Roles::Operators], description: "Toggling the ''Don't ping Nuse'' thing" do |event|
+    if NusePing::NusePing == 0
+      NusePing::NusePing = 1
+      event.respond "Nuse may be pinged"
+    else if NusePing::NusePing == 1
+      NusePing::NusePing =0
+      event.respond "Nuse may not be pinged"
+    end
+  end
+  
 end
