@@ -18,7 +18,7 @@ module Admin
     nil
   end
 
-  command :membercount, required_roles: [Roles::Operators], help_available: false do |event| #"help_available: false" hides it from the help command.
+  command :membercount, required_roles: [Roles::Operators] do |event| #"help_available: false" hides it from the help command.
     event.server.member_count # this returns a numerical value for server population automagically.
   end
 

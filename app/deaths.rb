@@ -8,7 +8,7 @@ module Deaths
 
   # looks for the `Operators` role.
   # TODO: move required role to config.
-  command :adddeath, required_roles: [Roles::Operators], help_available: false do |event, *parse_string|
+  command :adddeath, required_roles: [Roles::Operators], description: 'Add a death to the death counter. Usage: <username> - <Cause of death>', usage: "<username> - <Cause of death>" do |event, *parse_string|
     parse_string = parse_string.join(' ')
     parse_string = parse_string.split('-', 2)
     name = parse_string[0].gsub(/\s+$/, '')
