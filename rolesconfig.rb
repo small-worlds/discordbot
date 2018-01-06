@@ -10,7 +10,7 @@ module Roles
   Jerek=363721763986866198
   FlightClub=358308124077064192
   StarCitizen=395953973602942976
-  Kruger=
+  Kruger=399323843686301706
 end
 
 module Emojis
