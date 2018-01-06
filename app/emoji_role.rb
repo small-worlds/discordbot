@@ -54,10 +54,10 @@ module EmojiRole
   end
   
   reaction_add(emoji: [Emojis::ORCA]) do |event|
-    house=nil
+    hotel=nil
     if event.message.id == Message::MESSAGEID
-      house=event.user.on(Server::Server)
-      house.add_role(Roles:Kruger)
+      hotel=event.user.on(Server::Server)
+      hotel.add_role(Roles::Kruger)
     end
   end
 end
