@@ -51,7 +51,7 @@ module Admin
   end
   
   command :dunce, required_roles: [Roles::Operators], description: 'Handing out dunce hats.', min_args: 1, max_args: 1 do |event, target|
-    targeted = target.delete! '<@>'
+    targeted = target.delete! '<@!>'
       dave = event.server.member(targeted)
       response = String.new
     if dave.roles == []

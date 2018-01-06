@@ -52,4 +52,12 @@ module EmojiRole
       foxtrot.add_role(Roles::StarCitizen)
     end
   end
+  
+  reaction_add(emoji: [Emoji::ORCA]) do |event|
+    house=nil
+    if event.message.id == Message::MESSAGEID
+      house=event.user.on(Server::Server)
+      house.add_role(Roles:Kruger)
+    end
+  end
 end
