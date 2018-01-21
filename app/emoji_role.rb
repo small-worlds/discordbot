@@ -7,7 +7,7 @@ module EmojiRole
   
   def self.addrole(event, role) #Creates a method with two inputs, the event handler and the role to be added
     if event.message.id == Message::MESSAGEID  #checking the message the emoji is on is the right on
-      event.user.on(Server:Server).add_role(role) #apply role to forehead
+      event.user.on(Server::Server).add_role(role) #apply role to forehead
     end
   end
 
@@ -15,19 +15,19 @@ module EmojiRole
     addrole(event, Roles::Roleplayers) #Roleplayers
   end
   
-  reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
+  reaction_add(emoji: [Emojis::ONIONHEAD]) do |event|
     addrole(event, Roles::Jerek) #Unplanned beagle expo
   end
   
-  reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
+  reaction_add(emoji: [Emojis::PLANE]) do |event|
     addrole(event, Roles::FlightClub) #DCS
   end
   
-  reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
+  reaction_add(emoji: [Emojis::STARCITIZEN]) do |event|
     addrole(event, Roles::StarCitizen) #Star Citizen
   end
   
-  reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
+  reaction_add(emoji: [Emojis::ORCA]) do |event|
     addrole(event, Roles::Kruger) #SWE Winter expo 3 (Saud Kruger Beacon tour)
   end
   
