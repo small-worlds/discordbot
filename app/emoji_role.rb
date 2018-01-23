@@ -31,9 +31,9 @@ module EmojiRole
     addrole(event, Roles::Kruger) #SWE Winter expo 3 (Saud Kruger Beacon tour)
   end
   
-  # reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
-    # addrole(event, Roles::Roleplayers) #Unused
-  # end
+  reaction_add(emoji: [Emojis::LOTUS]) do |event|
+    addrole(event, Roles::Tenno) #Warframe channel perms
+  end
   
   # reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
     # addrole(event, Roles::Roleplayers) #Unused
