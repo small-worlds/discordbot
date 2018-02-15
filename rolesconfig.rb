@@ -36,6 +36,7 @@ end
 module Channel
   Swebotoutput = 321347260099198986 #swebot-output
   Corner = 310950970433732618
+  WaterWorld = 413751012453646346 #WaterWorld logging channel
 end
 
 module People

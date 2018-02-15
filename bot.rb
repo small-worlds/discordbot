@@ -22,6 +22,7 @@ require './app/roles.rb'
 require './app/tableflip.rb'
 require './app/voice.rb'
 require './app/utility.rb'
+require './app/waterworldlogging.rb'
 
 settings = YAML.load_file('botconfig.yml')
 if settings['token'].nil? || settings['client_id'].nil?
@@ -73,4 +74,5 @@ bot.include! Roleplay
 bot.include! TableFlip
 bot.include! Voice
 bot.include! Utility
+bot.include! WaterWorld
 bot.run unless ARGV[0] == "test"
