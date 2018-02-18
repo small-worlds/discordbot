@@ -9,8 +9,6 @@ module WaterWorld
     system = parse_string[0].gsub(/\s+$/, '')
     planet_code = parse_string[1].chomp.gsub!(/^\s+/, '')
     
-    message = Channel::WaterWorld, "WW found, system: " + system + "\nPlanet: " + planet_code + "\nCommander: " + event.author.display_name
-    
-    event.bot.send_message(message)
+    event.bot.send_message(Channel::WaterWorld, "WW found, system: " + system + "\nPlanet: " + planet_code + "\nCommander: " + event.author.display_name)
   end
 end
