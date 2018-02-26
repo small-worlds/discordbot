@@ -1,4 +1,4 @@
-# Discord Roleplay Bot
+# Small Worlds Discord Bot
 require 'discordrb'
 require 'yaml'
 
@@ -26,8 +26,13 @@ require './app/waterworldlogging.rb'
 
 settings = YAML.load_file('botconfig.yml')
 if settings['token'].nil? || settings['client_id'].nil?
-  puts '`token` and `client_id` are required! Please copy `botconfig.yml.example` to `botconfig.yml` and edit it with your credentials.'
-  exit
+  if ENV['TOKEN'].nil? || ENV['CLIENTID'].nil?
+    puts '`token` and `client_id` are required! Please copy `botconfig.yml.example` to `botconfig.yml` and edit it with your credentials.'
+    exit
+  else
+    settings['token'] = ENV['TOKEN']
+    settings['client_id'] = ENV['CLIENTID']
+  end
 end
 
 settings['prefix_char'] ||= '&'
