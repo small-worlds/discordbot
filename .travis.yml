@@ -1,8 +1,26 @@
 language: ruby
 cache: bundler
-
+sudo: required
+services:
+- docker
 before_script:
 - cp botconfig.yml.example botconfig.yml
-
 script:
 - bundle exec ruby bot.rb test
+after_success:
+- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+- export REPO=smallworlds/discordbot
+- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH;
+  fi`
+- docker build -f Dockerfile -t $REPO:$COMMIT .
+- docker tag $REPO:$COMMIT $REPO:$TAG
+- docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+- docker push $REPO
+env:
+  global:
+  # Docker Email
+  - secure: KjKINiJGUPh/6u5eq8gSt6da3/oTSAyPx9cZ21aje/Fsn36J+um1J8YOuxUZP4x3lqoNcJvBbdpSCJSH/izcxXQrvPrA4P7+QtvqApWxrUvn8wrzEtHGyWVyehV2HThglV4mIuuN4TzAN/I2EOhznfpA6bCHypeF8xTL4LPUG5+w5Unoq9cmDnFnhgrTuyGA3a0yQPCgcUauPxzWxRWx51fHzvW2+KmyV3Xfm233Az5vD+4t9mhHg5Oc1LO8te4Gd1Lmgb8T5LBwKQbaeS424icEljQ5Zhps4KBqnl4i1CNz8LCnVfF6B43UyyXSpxbDloYOl3fCw/GbZQqKsT53jwfozYl3PxzG1xCRm9ujJbwb5bZQLcsCiD7E1v7eBcbuWKyEMtErw6xmMUFQZF3mYC/asCSaqMZQopoRzrW7Gc/ZsdMNSN59ripVyVWe13vyJR/fMIgNRu6dIxQxPtaeGER91koad+bDVuEQ7tc9wX06T77MDHOb52U+2mg+P6iS2nylc5Q6AT85gZ1pTkY1IZV2KenY23gapPA2cSenpm5Ps2ejVYozcJYkG6y64J5iT0mPesVWmsiZPlZzKoyqlp4ZIivioy1s0hudyshNHRHaxb/MLzIXdqegX3KuZu2q0HWdB8Q7Ap1LKSTk0j1s6nFFLp6TN3Q6xNzY+NcpcpA=
+  # Docker Username
+  - secure: OIHuEtDOKMfjxkedI5uVUiIAtVkVJJH4llCTrHlEegRvLcC1YnV2+a+q9NnJIwTrGdUFInVRnvITKFn0SKMvR2t/9PBEVulJOs/pqLzUBX7p9plQmwhazLtlsWvUt3Bi8L5nNFcyrye/U8eRxjfiSesWwdsUedmE89qE7arhywOwhlo8HlwZFOXwvPAKpRAY6Zg61XkiddDnB7x5kmyZpSF/2M4gvpE0nT0Wlxvs30zH1PFcB0wu4sDZu/IU7NjejGjR7oPuRsrowtdosHB1oVHjRE/vBKPvoLJujXILk0JxeH8rSpauuIJR6SaGcnj6Dup1QTWQ96Uth4eSASCiEJf/2ST0omS/o5exRb4R/4Kdb1GL6NEdyDglRghWr9a0m5I7sypcGzjjmNlIhIu9Mp2F2Pv0mcDFouOWoPJnO/L04iPNfrhk0iUGmqCZuGR54mgFqbv+OXHhGgv8YoEeCCNm6AuELdDwmKWm6n19BKl3rd3+1KD0jWOJ2/dnxr6GktQWvFAnsAdnJ8rqqsM1e4ocoFVVnqCwnjl4eUQbdXnQPyuSkIRnn5+r4HOo8Ilfy/iPodECWVh62GgzQ7ohTGiunkx6x1iX3ZzyUZCl9EyLfnF4vjvv6iqzvJPz7wYA1O0ECUyO6pNhKe5BcPd/eo0JKvRZ8Ga3RRF6zkZFf4s=
+  # Docker Password
+  - secure: ke+4bsfc35/ytg4h7BVCuNbdfVD6azm2XDBzLc1JoOg52nvUAXaLlhJKq4Ac7u/toI2BhWLnIHUawnYkEL0nxcgNyLv5uCOYIz1DOIdP5RFpinhfJsn/SFMvJ8bk57ogesi+5FUDeFKEpAn8/tYqbem+8ROkAF2s4W995UqkNmsfvzGE3yccFbQhPs5qNfxfYB79IyfuWMLmHYw2fYjIesDkDpF4t9gZOuU73veWzcvkEpbgStPP4LqrnxG+vthCP65rbm0QSxyI79Az+UpbBHhTN1sbsa/17a7P+1MsPPB5BEwoO3bJ4YJFtjzuKhPVkqYhk1P2UWUBb2N3rGYzjOupbqq9dxVIThOtUGXTH2ta9NzS3M7KoJ4IwdjQYghnpdfuwTlawUtG6+4oCx1DzAG1LGaAI9+zFe/rAmNmwiIuCN/hMv4uBtuq3MYkXAON6EUaIBb2wMpeNOrWkLdFVbal2233fS8lWl6mvz+PkMf0qavHrrtZVexbwv0SGR+OIJpfUDyToMDShDlHNKJl8P6Ewu9R0+3m64Y+eS07kXIckqDvyhCFbHkwcBtm0fdctfcanzXfXKD82ym4LKKf9N+m/rjVARz2FmI5CvZM+bdSaARvzC6b+A10F0dS5MoQ04YfNVJirE83fk4MQYOnAjb1ku3IWQZ7/ZIyWbI6l80=
