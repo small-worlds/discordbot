@@ -8,6 +8,7 @@ before_script:
 script:
 - bundle exec ruby bot.rb test
 after_success:
+- rm -f botconfig.yml
 - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 - export REPO=smallworlds/discordbot
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH;
