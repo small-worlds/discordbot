@@ -9,6 +9,7 @@ A [Discord](https://discordapp.com) bot, written in Ruby.
 * ruby 2.3.1 or later
 * bundler
 * A discord app with a bot added.
+* (Optional) [Docker](https://docker.io)
 
 ### Discord Application Setup
 
@@ -27,3 +28,13 @@ A [Discord](https://discordapp.com) bot, written in Ruby.
 5. Great success!
 
 When you run the bot, it will give you an invite URL to invite it to your server. Follow that, select your Discord community, and PROFIT!
+
+### Optional Docker Setup
+
+1. Create a static assets directory locally, e.g. `/home/smallworlds/assets/`
+2. Make the directories `<assets_path>/audio/` and `<assets_path>/resources/`
+3. Copy your audio files to `<assets_path>/audio/`
+3. Copy your resources to `<assets_path>/resources/`
+4. `docker build -t discordbot:latest .` in this directory
+5. Copy `botconfig.yml.example` to `<assets dir>/botconfig.yml` and edit as above
+6. Run the bot: `docker run -d -it --rm -v <assets dir>  discordbot:latest`
