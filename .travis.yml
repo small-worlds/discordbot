@@ -16,9 +16,16 @@ after_success:
 - docker tag $REPO:$TRAVIS_BRANCH $REPO:$TAG
 - docker tag $REPO:$TRAVIS_BRANCH $REPO:travis-$TRAVIS_BUILD_NUMBER
 - docker push $REPO
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key
+    deploy@docker.drunknerds.net './deploy.sh'
+  branch: master
 env:
   global:
-  # Docker user
   - secure: eJJBjPDU6IxY1+40un3f4oEH+fixpigaTiK/JnX9p3dS0Nd/+Jm3M1KkNb19ydrIJBv8GRiJWTn3HCVO2ppHfA1sOt4RbM97D6gMht7uYlkKSDEH07tPQUOxZVKwaj6AnU7ThAdRuok0S7s7q+ZOXhZMidSI2WpabVUVaRdkVL68tm4uKpsKyv8vsfXy208x3lmmYcKpgmkynaH3kO4W8/eYTVMNqmPAXLa5Zvve9drk/+8plqNSq4gCnFfMFliqE7r7eaYRRVpOZQT2BGLCaqBxxLFUl3SqfRb76fVLIkxoH4Hi4jnF5K/7H4VyZz4u7oUEm/cABIWD91/qcLOFWAUf1XohNt3yaA5zSiNyXjCj2VgbCD1a2gX+Eqhbradx/lNrqXVveB4oZXuU2CKvrmhcKJIX8FmZnihE8XR/VDdVFbvRssqZVIyYde+ntxcZESxv+T+8nOb3uStao+4/y7m3i3XHj/6F9wULm5eaqgfOQuC2wOnLnwBLiOn/7P2iBKhiTAVI5ZxoFoNXaVdehOYhkb5dCPIJe7Lw3PthNc0NjCBr8niCBFiLycHsUsePEqGo8SGY5nBhI88GbM4ZoptYjGFpxpBRzqy1q6t60jPcrJRZn+2OKO1p6d7g5wkGtBluO0Ny2fGvbJ8+1hH9sP+NyR7WkMFhXGQqUMQ7qGs=
-  # Docker password
   - secure: ZOjmDFPxQT+FAxYqbs/DFdo0VWQCq2wCubPHWsCqgdztfqT2Jvd7Q2ayk+5hfbZDEAcFn/FKvTFvfX0EQ58RNVz7ZuEmgR9djNJyoV/dHdc5L+Zs1AqIGIHsvgXuE/QbkaKSuW6eZXA/GLGqUL+Mfjo3lX0lrdkW0DpUmA61uej1ubuyZ4XlQGVabm/lboxb/EihOgyDDKZhirqOohpR1n7nec/68B6iFIFlqzvJn7eVTiM8MTfT+IIq4is2ecNZEm+yVwnD1pm/+48Ya7KHmos51u9N1epNfGRbLBJ5nFmTEaLwSm16gpCsfpsgljjA4tuy6TQCcxJbRTqwUP/Ke/9nFUeVH9b1IjF6KnsgYX2jtw3enfdV26rmqn8VK3qV8EyeVTxO9jP2OTOB1KZalixMR4QUKCW3OHueUPat96VMXTfJ/RJIPfuw9sXN+igsCEjz/CBivIJqv7/Wvi0wO8dVekBZTGOvWoaUao/bewquecdif6tRDrVPR08Sd3M/GEF5rUQefiYDlpPI8Nft63jo6qi4i3RoKIjgSsNkz8hVdZ/6oB3sFe39KhEqwCS7GlohAlOj7BjvvQUDuT75c6RhHSK7taNRb3cl+BW2MKWaLOS8keQHoWt1HT0YvuzKYKsnmAo0i8w2UG/9w4FdKwmJMNZlA1D4D3h7PasztCU=
+before_install:
+- openssl aes-256-cbc -K $encrypted_5f4fe3615fb0_key -iv $encrypted_5f4fe3615fb0_iv
+  -in deploy_key.enc -out ./deploy_key -d
