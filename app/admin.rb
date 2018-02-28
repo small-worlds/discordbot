@@ -77,5 +77,14 @@ module Admin
       event.respond "Nuse may not be pinged"
     end
   end
+    
+  command :troll, required_roles: [Roles::Operators], min_args: 0, max_args: 1, help_available: false do |event, type|
+    if victim = event.server.member(142430972065873920)
+      event.bot.voice_connect(victim.voice_channel)
+      sleep(0.05)
+      event.bot.voice(event.server.id).destroy
+      nil
+    end
+  end
   
 end
