@@ -35,9 +35,9 @@ module EmojiRole
     addrole(event, Roles::Tenno) #Warframe channel perms
   end
   
-  # reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
-    # addrole(event, Roles::Roleplayers) #Unused
-  # end
+  reaction_add(emoji: [Emojis::SWE3]) do |event|
+    addrole(event, Roles::Roleplayers) #Small Worlds Three!
+  end
   
   # reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
     # addrole(event, Roles::Roleplayers) #Unused
