@@ -36,7 +36,7 @@ module EmojiRole
   end
   
   reaction_add(emoji: [Emojis::SWE3]) do |event|
-    addrole(event, Roles::Roleplayers) #Small Worlds Three!
+    addrole(event, Roles::SWE3) #Small Worlds Three!
   end
   
   # reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
