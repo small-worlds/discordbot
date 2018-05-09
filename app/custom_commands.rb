@@ -69,7 +69,7 @@ module CustomCommands
   end
 
   command :swe3 do |event|
-    event.respond "It's on the List™"
+    event.respond "It's happening!"
   end
 
   command :summon do |event|
