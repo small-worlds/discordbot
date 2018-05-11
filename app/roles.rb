@@ -6,9 +6,10 @@ module PublicRoles
   # Assuming case-sensitive, case-matched to Discord roles
   public_roles = [
     'Roleplayers',
-    'Small Worlds 2',
-    'Small Worlds 2 Xbox',
-    'Flight Club'
+    'Flight Club',
+    'Small Worlds 3',
+    'Xbox',
+    'PS4'
     ]
 
   command :role, description: "Add or remove a public role on yourself",
