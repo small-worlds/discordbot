@@ -19,7 +19,7 @@ require './app/max_jump.rb'
 require './app/move.rb'
 require './app/roleplay.rb'
 require './app/roles.rb'
-require './app/tableflip.rb'
+#require './app/tableflip.rb'
 require './app/voice.rb'
 require './app/utility.rb'
 require './app/waterworldlogging.rb'
@@ -76,7 +76,7 @@ bot.include! Move
 bot.include! NoContext
 bot.include! PublicRoles
 bot.include! Roleplay
-bot.include! TableFlip
+#bot.include! TableFlip
 bot.include! Voice
 bot.include! Utility
 bot.include! WaterWorld
