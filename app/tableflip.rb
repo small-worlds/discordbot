@@ -3,7 +3,7 @@ module TableFlip
   
   isUnFlipped = true
   
-  command :tableflip, bucket: :memes, description: "For those mobile users to flip tables too." do |event|
+  command :tableflip, bucket: :slowdown, description: "For those mobile users to flip tables too." do |event|
     if isUnFlipped
       event.respond "(╯°□°）╯︵ ┻━┻"
       isUnFlipped = false
@@ -14,7 +14,7 @@ module TableFlip
     end
   end
   
-  command :unflip, bucket: :memes, description: "Unflip those flipped tables. Poor table-kun" do |event|
+  command :unflip, bucket: :slowdown, description: "Unflip those flipped tables. Poor table-kun" do |event|
     if isUnFlipped
       event.respond "table already upright ┬─┬"
       break
