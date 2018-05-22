@@ -59,6 +59,7 @@ bot = Discordrb::Commands::CommandBot.new token: settings['token'],
                                           no_permission_message: "Error! Insufficient permissions to use command."
 
 bot.bucket :memes, limit: 3, time_span: 60, delay: 10
+bot.bucket :slowdown, limit: 1, time_span: 600, delay: 60
 
 puts "Invite URL is #{bot.invite_url}"
 
