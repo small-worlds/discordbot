@@ -29,14 +29,14 @@ module Countdown
     'wp8' =>       Time.new(2018,7,14, 19,00,00, "+00:00"),
   }
 
-  # waypointsaus = {
-    # 'wp1' =>       Time.new(2018,6,6,  10,00,00, "+00:00"),
-    # 'wp2' =>       Time.new(2018,6,8,  10,00,00, "+00:00"),
-    # 'wp4' =>       Time.new(2018,6,14, 10,00,00, "+00:00"),
-    # 'wp5' =>       Time.new(2018,6,21, 10,00,00, "+00:00"),
-    # 'wp7' =>       Time.new(2018,6,28, 10,00,00, "+00:00"),
-    # 'wp8' =>       Time.new(2018,7,5,  10,00,00, "+00:00"),
-  # }
+  waypointsaus = {
+    'wp1' =>       Time.new(2018,5,29,  10,00,00, "+00:00"),
+    'wp2' =>       Time.new(2018,5,31,  10,00,00, "+00:00"),
+    'wp4' =>       Time.new(2018,6,5, 10,00,00, "+00:00"),
+    'wp5' =>       Time.new(2018,6,7, 10,00,00, "+00:00"),
+    'wp7' =>       Time.new(2018,6,12, 10,00,00, "+00:00"),
+    'wp8' =>       Time.new(2018,7,14,  10,00,00, "+00:00"),
+  }
 
 
   command :countdown, description: 'Time until a given waypoint',
@@ -71,12 +71,12 @@ module Countdown
       end
     end
 
-    # if waypointsaus[waypoint.downcase]
-      # if curr_time < waypointsaus[waypoint.downcase]
-        # timeaus = Time.diff(waypointsaus[waypoint.downcase], Time.now.utc)[:diff]
-        # output += "\nThe time before **AUS** meeting is: **#{timeaus}**"
-      # end
-    # end
+    if waypointsaus[waypoint.downcase]
+      if curr_time < waypointsaus[waypoint.downcase]
+        timeaus = Time.diff(waypointsaus[waypoint.downcase], Time.now.utc)[:diff]
+        output += "\nThe time before **AUS** meeting is: **#{timeaus}**"
+      end
+    end
 
     event.respond output
   end
