@@ -5,6 +5,7 @@ module Admin
   extend Roles
   extend Channel
   extend NusePing
+  extend PeopleID
 
   command :updateprofile, required_roles: [Roles::Botadmin], help_available: false do |event|
   #Looks for the `botadmin` role
@@ -79,12 +80,18 @@ module Admin
   end
     
   command :troll, required_roles: [Roles::Operators], min_args: 0, max_args: 1, help_available: false do |event, type|
-    if victim = event.server.member(142430972065873920)
+    if victim = event.server.member(PeopleID::Virtual)
       event.bot.voice_connect(victim.voice_channel)
       sleep(0.05)
       event.bot.voice(event.server.id).destroy
       nil
     end
+  end
+  
+  command :groupup, required_roles: [Roles::Operators], min_args: 0, help_available: true do |event|
+		WingSwitch.constants.each do |c|
+			event.server.move(event.server.member(c), Channel::Conference)
+		end
   end
   
 end
