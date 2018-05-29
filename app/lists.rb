@@ -1,12 +1,11 @@
 module Listing
   extend Discordrb::Commands::CommandContainer
   extend Roles
+  extend WingSwitch
+	extend Channel
 
   wing_list = Array.new
   # The array that is wing_list is created.
-  
-  wing_switch = true
-  # So we can turn &wingme on and off
 
   command :winglist, required_roles: [Roles::WingHelper], description: "Lists those who are requesting wing." do |event|
     # Check to see if they have the "winghelper" role. Won't work for anyone else.
@@ -43,12 +42,12 @@ module Listing
 
   command :wingme, description: "Adds you to the wing waiting list" do |event|
   # Adds the person who used the command to wing_list.
-    if wing_switch == false
+    if WingSwitch::wing_switch == false
     # Turns the command on and off
       event.respond "Not currently accepting wing invites"
       break
     else
-      break if event.channel.name.downcase != 'bot-abuse'
+      break if event.channel.id == Channel::BotAbuse
       # Forces people to only use bot-abuse for wing requests.
       if wing_list.include?(event.author)
       # Check the user isn't spamming their name onto the list...
@@ -76,6 +75,6 @@ module Listing
   
   command :wingswitch, required_roles: [Roles::Operators] do |event|
     event.respond "Bot accepting &wingme?"
-    wing_switch = !wing_switch
+    WingSwitch::wing_switch = !WingSwitch::wing_switch
   end
 end

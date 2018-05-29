@@ -41,8 +41,10 @@ end
 
 module Channel
   Swebotoutput = 321347260099198986 #swebot-output
-  Corner = 310950970433732618
+  Corner = 310950970433732618 #The voice channel
   WaterWorld = 413751012453646346 #WaterWorld logging channel
+	BotAbuse = 192047504034889728 #bot-abuse channel
+	Conference = 210455750399623168 #Conference Voice channel
 end
 
 module People
@@ -53,8 +55,19 @@ end
 module PeopleID
   Nuse = 114144783739518981
   Ravstar = 118017724537503751
+  Corgi = 173965472327270400
+  Lane = 175059448727863297
+  Virtual = 142430972065873920
+  Jerek = 114781637379620870
+  Andromeda = 165671747973021696
+  Coods = 207682736398401538
 end
 
 module NusePing
   NusePing = 1
+end
+
+module WingSwitch
+  wing_switch = false
+  # So we can turn &wingme on and off
 end
