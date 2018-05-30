@@ -89,8 +89,13 @@ module Admin
   end
   
   command :groupup, required_roles: [Roles::Operators], min_args: 0, help_available: true do |event|
-		WingSwitch.constants.each do |c|
-			event.server.move(event.server.member(c), Channel::Conference)
+		event.server.voice_channels.each do |uh|
+			if uh.id == Channel::Conference
+				channel1=uh
+			end
+		end
+		PeopleID.constants.each do |c|
+			event.server.move(event.server.member(c), channel1)
 		end
   end
   

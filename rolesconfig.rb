@@ -66,8 +66,3 @@ end
 module NusePing
   NusePing = 1
 end
-
-module WingSwitch
-  wing_switch = false
-  # So we can turn &wingme on and off
-end
