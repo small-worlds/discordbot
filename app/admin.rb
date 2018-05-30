@@ -95,7 +95,7 @@ module Admin
 			end
 		end
 		PeopleID.constants.each do |c|
-			event.server.move(event.server.member(c), channel1)
+			event.server.move(event.server.member(PeopleID.const_get(c)), channel1)
 		end
   end
   
