@@ -88,7 +88,7 @@ module Admin
     end
   end
   
-  command :groupup, required_roles: [Roles::Operators], min_args: 0, help_available: true do |event|
+  command :groupup, required_roles: [Roles::Operators], description: "Supposed to move all admins and staff to the Conference room. What it actually does is unknown."do |event|
 		event.server.voice_channels.each do |uh|
 			if uh.id == Channel::Conference
 				channel1=uh
