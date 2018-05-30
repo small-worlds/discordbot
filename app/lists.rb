@@ -49,7 +49,7 @@ module Listing
       event.respond "Not currently accepting wing invites"
       break
     else
-      break if event.channel.id == Channel::BotAbuse
+      break if event.channel.id != Channel::BotAbuse
       # Forces people to only use bot-abuse for wing requests.
       if wing_list.include?(event.author)
       # Check the user isn't spamming their name onto the list...
