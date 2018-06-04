@@ -88,7 +88,8 @@ module Admin
     end
   end
   
-  command :groupup, required_roles: [Roles::Operators], description: "Supposed to move all admins and staff to the Conference room. What it actually does is unknown."do |event|
+  command :groupup, required_roles: [Roles::Operators], description: "Supposed to move all listed people to the Conference room. List is configureable in rolesconfig.rb" do |event|
+		channel1=nil
 		event.server.voice_channels.each do |uh|
 			if uh.id == Channel::Conference
 				channel1=uh
@@ -97,6 +98,6 @@ module Admin
 		PeopleID.constants.each do |c|
 			event.server.move(event.server.member(PeopleID.const_get(c)), channel1)
 		end
+		return nil
   end
-  
 end
