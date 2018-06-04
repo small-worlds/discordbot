@@ -31,4 +31,8 @@ module Utility
       beta.send "#{alpha.mention} Please don't ping Nuse."
     end
   end
+	
+	ready do |event|
+		event.bot.send_message(Channel::TechWorlders, "And i'm back!")
+	end
 end
