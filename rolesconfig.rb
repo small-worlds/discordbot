@@ -4,6 +4,7 @@ module Roles
   WingHelper=234099430897221632
   SWE2=308279505091559434
   SWE2Xbox=308593158827278337
+  SWE3=435465312771506186
   Roleplayers=214402788279582720
   Dunce=311293215930056705
   Voice=352884100715249664
@@ -12,14 +13,12 @@ module Roles
   StarCitizen=395953973602942976
   Kruger=399323843686301706
   Tenno=383021812520452096
-  SWE3=435465312771506186
   XBOX=444555292626255882
   PS=444555327501762560
 end
 
 module Emojis
   SMALL_WORLDS = 236127165010280458
-  XBOX = 316295019097227264
   ROLEPLAYERS = 316295046704136202
   ONIONHEAD = 236305019182383105
   PLANE = 236303964843409408
@@ -32,7 +31,7 @@ module Emojis
 end
 
 module Message
-  MESSAGEID = 316293235700137984
+  MESSAGEID = 316293235700137984 #This is the message we look at to make emojirole work. Changing this is a bad idea.
 end
 
 module Server
@@ -44,6 +43,7 @@ module Channel
   Corner = 310950970433732618 #The voice channel
   WaterWorld = 413751012453646346 #WaterWorld logging channel
 	BotAbuse = 192047504034889728 #bot-abuse channel
+	TechWorlders = 233293054319001601 #Tech-Worlders channel
 	Conference = 210455750399623168 #Conference Voice channel
 end
 
