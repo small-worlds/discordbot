@@ -45,6 +45,7 @@ module Channel
 	BotAbuse = 192047504034889728 #bot-abuse channel
 	TechWorlders = 233293054319001601 #Tech-Worlders channel
 	Conference = 210455750399623168 #Conference Voice channel
+	General = 233428254189420544 #General Voice Channel
 end
 
 module People
@@ -58,7 +59,7 @@ module PeopleID
   Corgi = 173965472327270400
   Lane = 175059448727863297
   Virtual = 142430972065873920
-  Jerek = 114781637379620870
+#  Jerek = 114781637379620870
   Andromeda = 165671747973021696
   Coods = 207682736398401538
 end

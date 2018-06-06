@@ -100,4 +100,20 @@ module Admin
 		end
 		return nil
   end
+	
+	command :groupdown, required_roles : [Roles::Operators], description: "Return to ~~sender~~ General" do |event|
+		channel1=nil
+		channel2=nil
+		event.server.voice_channels.each do |uh|
+			if uh.id == Channel::Conference
+				channel1=uh
+			end
+			if uh.id == Channel::General
+				channel2=uh
+			end
+		end
+		channel1.users.each do |u|
+			event.server.move(u,channel2)
+		end
+	end
 end
