@@ -33,6 +33,6 @@ module Utility
   end
 	
 	ready do |event|
-		event.bot.send_message(Channel::TechWorlders, "And i'm back!")
+		event.bot.send_message(Channel::TechWorlders, "And I'm back!")
 	end
 end
