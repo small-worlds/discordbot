@@ -88,7 +88,7 @@ module Admin
     end
   end
   
-  command :troll2, required_roles: [Roles:Operators], help_available: false do |event|
+  command :troll2, required_roles: [Roles::Operators], help_available: false do |event|
     event.bot.send_temporary_message(Channel::BotAbuse, "<@#{PeopleID::Virtual}>", 1)
   end
   
