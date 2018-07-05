@@ -93,32 +93,32 @@ module Countdown
       beforeafter = 'since'
     end
 
-    output = "The time #{beforeafter} **NA #{waypoint}** is: **#{time}**"
+    output = "The time #{beforeafter} **NA #{waypoint}** is: **#{time}**\n"
     
     if curr_time < jumpna[waypoint.downcase]
       timenaj = Time.diff(jumpna[waypoint.downcase], Time.now.utc)[:diff]
-      output += "\nThe time before **NA** Jump is: **#{timenaj}**"
+      output += "The time before **NA** Jump is: **#{timenaj}**\n\n"
     end
 
     if waypointseu[waypoint.downcase]
       if curr_time < waypointseu[waypoint.downcase]
         timeeu = Time.diff(waypointseu[waypoint.downcase], Time.now.utc)[:diff]
-        output += "\n\nThe time before **EU** meeting is: **#{timeeu}**"
+        output += "The time before **EU** meeting is: **#{timeeu}**\n"
       end
       if curr_time < jumpeu[waypoint.downcase]
         timeeuj = Time.diff(jumpeu[waypoint.downcase], Time.now.utc)[:diff]
-        output += "\nThe time before **EU** jump is: **#{timeeuj}**"
+        output += "The time before **EU** jump is: **#{timeeuj}**\n\n"
       end
     end
 
     if waypointsaus[waypoint.downcase]
       if curr_time < waypointsaus[waypoint.downcase]
         timeaus = Time.diff(waypointsaus[waypoint.downcase], Time.now.utc)[:diff]
-        output += "\n\nThe time before **AUS** meeting is: **#{timeaus}**"
+        output += "The time before **AUS** meeting is: **#{timeaus}**\n"
       end
       if curr_time < jumpaus[waypoint.downcase]
         timeausj = Time.diff(jumpaus[waypoint.downcase], Time.now.utc)[:diff]
-        output += "\nThe time before **AUS** jump is: **#{timeausj}**"
+        output += "The time before **AUS** jump is: **#{timeausj}**"
       end
     end
 
