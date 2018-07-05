@@ -79,13 +79,17 @@ module Admin
     end
   end
     
-  command :troll, required_roles: [Roles::Operators], min_args: 0, max_args: 1, help_available: false do |event, type|
+  command :troll, required_roles: [Roles::Operators], help_available: false do |event|
     if victim = event.server.member(PeopleID::Virtual)
       event.bot.voice_connect(victim.voice_channel)
       sleep(0.05)
       event.bot.voice(event.server.id).destroy
       nil
     end
+  end
+  
+  command :troll2, required_roles: [Roles::Operators], help_available: false do |event|
+    event.bot.send_temporary_message(Channel::BotAbuse, "<@#{PeopleID::Virtual}>", 1)
   end
   
   command :groupup, required_roles: [Roles::Operators], description: "Supposed to move all listed people to the Conference room. List is configureable in rolesconfig.rb" do |event|
