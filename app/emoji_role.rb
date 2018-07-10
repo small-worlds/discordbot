@@ -10,14 +10,6 @@ module EmojiRole
       event.user.on(Server::Server).add_role(role) #apply role to forehead
     end
   end
-
-  reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
-    addrole(event, Roles::Roleplayers) #Roleplayers
-  end
-  
-  reaction_add(emoji: [Emojis::ONIONHEAD]) do |event|
-    addrole(event, Roles::Jerek) #Unplanned beagle expo
-  end
   
   reaction_add(emoji: [Emojis::PLANE]) do |event|
     addrole(event, Roles::FlightClub) #DCS
@@ -27,16 +19,8 @@ module EmojiRole
     addrole(event, Roles::StarCitizen) #Star Citizen
   end
   
-  reaction_add(emoji: [Emojis::ORCA]) do |event|
-    addrole(event, Roles::Kruger) #SWE Winter expo 3 (Saud Kruger Beacon tour)
-  end
-  
   reaction_add(emoji: [Emojis::LOTUS]) do |event|
     addrole(event, Roles::Tenno) #Warframe channel perms
-  end
-  
-  reaction_add(emoji: [Emojis::SWE3]) do |event|
-    addrole(event, Roles::SWE3) #Small Worlds Three!
   end
   
   reaction_add(emoji: [Emojis::XBOX]) do |event|
@@ -46,6 +30,22 @@ module EmojiRole
   reaction_add(emoji: [Emojis::PS]) do |event|
     addrole(event, Roles::PS) #PS4
   end
+
+  # reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
+    # addrole(event, Roles::Roleplayers) #Roleplayers
+  # end
+  
+  # reaction_add(emoji: [Emojis::ORCA]) do |event|
+    # addrole(event, Roles::Kruger) #SWE Winter expo 3 (Saud Kruger Beacon tour)
+  # end
+  
+  # reaction_add(emoji: [Emojis::SWE3]) do |event|
+    # addrole(event, Roles::SWE3) #Small Worlds Three!
+  # end
+  
+  # reaction_add(emoji: [Emojis::ONIONHEAD]) do |event|
+    # addrole(event, Roles::Jerek) #Unplanned beagle expo
+  # end
   
   # reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
     # addrole(event, Roles::Roleplayers) #Unused
