@@ -7,7 +7,6 @@ module PublicRoles
   public_roles = [
     'Roleplayers',
     'Flight Club',
-    'Small Worlds 3',
     'Xbox',
     'PS4'
     ]
