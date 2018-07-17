@@ -31,7 +31,7 @@ module EmojiRole
     addrole(event, Roles::PS) #PS4
   end
 
-  reaction_add(emoji: 🕶) do |event|
+  reaction_add(emoji: [Emojis::VR]) do |event|
     addrole(event, Roles::VR) #VR
   end
   
