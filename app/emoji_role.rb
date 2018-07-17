@@ -31,9 +31,9 @@ module EmojiRole
     addrole(event, Roles::PS) #PS4
   end
 
-  # reaction_add(emoji: [Emojis::ROLEPLAYERS]) do |event|
-    # addrole(event, Roles::Roleplayers) #Roleplayers
-  # end
+  reaction_add(emoji: 🕶) do |event|
+    addrole(event, Roles::VR) #VR
+  end
   
   # reaction_add(emoji: [Emojis::ORCA]) do |event|
     # addrole(event, Roles::Kruger) #SWE Winter expo 3 (Saud Kruger Beacon tour)
