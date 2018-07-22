@@ -35,9 +35,9 @@ module EmojiRole
     addrole(event, Roles::VR) #VR
   end
   
-  # reaction_add(emoji: [Emojis::ORCA]) do |event|
-    # addrole(event, Roles::Kruger) #SWE Winter expo 3 (Saud Kruger Beacon tour)
-  # end
+  reaction_add(emoji: [Emojis::ARM]) do |event|
+    addrole(event, Roles::ARM) #Armistice Summit
+  end
   
   # reaction_add(emoji: [Emojis::SWE3]) do |event|
     # addrole(event, Roles::SWE3) #Small Worlds Three!
