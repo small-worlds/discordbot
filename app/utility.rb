@@ -33,6 +33,6 @@ module Utility
   end
 	
 	ready do |event|
-		event.bot.send_message(Channel::TechWorlders, "Reboot complete")
+		event.bot.send_message(Channel::Swebotoutput, "Reboot complete")
 	end
 end
