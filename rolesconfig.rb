@@ -49,7 +49,8 @@ module Channel
 	BotAbuse = 192047504034889728 #bot-abuse channel
 	TechWorlders = 233293054319001601 #Tech-Worlders channel
 	Conference = 210455750399623168 #Conference Voice channel
-	General = 233428254189420544 #General Voice Channel
+	General = 233428254189420544 #General Voice channel
+  Table = 479780689148117003 #Tableflipping channel
 end
 
 module People
