@@ -14,14 +14,17 @@ module Utility
     event.bot.send_message(Channel::Swebotoutput, event.user.username + " left the server")
   end
 
-/*  voice_state_update do |event|
+#this is now L E G A C Y C O D E
+=begin
+  voice_state_update do |event|
     idiot = event.user.on(Server::Server)
     if idiot.voice_channel == nil && idiot.role?(Roles::Voice)
       idiot.remove_role(Roles::Voice)
     elsif idiot.voice_channel != nil && idiot.role?(Roles::Voice) == false
       idiot.add_role(Roles::Voice)
     end
-  end */ #this is now L E G A C Y C O D E
+  end
+=end
 
   message(contains: People::Nuse) do |event|
     if NusePing::NusePing == 0
