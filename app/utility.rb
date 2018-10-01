@@ -8,12 +8,9 @@ module Utility
 
   member_join do |event|
     event.bot.send_message(Channel::Swebotoutput, event.user.username + " joined the server")
-<<<<<<< HEAD
     if{event.user.username.include? "discord.gg"}
       server.kick(event.user)
     end
-=======
->>>>>>> fc961fbd330d062dea7cf8598ae9847d1eee909f
   end
   
   member_leave do |event|
