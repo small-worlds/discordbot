@@ -27,32 +27,31 @@ module Move
     end
   end
   
-  command :mute, help_available: false, required_roles: [Roles::Operators], min_args: 1, max_args: 1 do |event, dave|
-    channel1=nil
-    event.server.channels.each do |carl|
-      if carl.name == dave and carl.voice?
-        channel1=carl
-      end
-    end
-    event.respond "And there was silence in " << channel1.name
-    channel1.users.each do |u|
-      u.server_mute
-      sleep(0.01)
-    end
-  end
+  # command :mute, help_available: false, required_roles: [Roles::Operators], min_args: 1, max_args: 1 do |event, dave|
+    # channel1=nil
+    # event.server.channels.each do |carl|
+      # if carl.name == dave and carl.voice?
+        # channel1=carl
+      # end
+    # end
+    # event.respond "And there was silence in " << channel1.name
+    # channel1.users.each do |u|
+      # u.server_mute
+      # sleep(0.01)
+    # end
+  # end
   
-  command :unmute, help_available: false, required_roles: [Roles::Operators], min_args: 1, max_args: 1 do |event, dave|
-    channel1=nil
-    event.server.channels.each do |carl|
-      if carl.name == dave and carl.voice?
-        channel1=carl
-      end
-    end
-    event.respond "And the silence fades from " << channel1.name
-    channel1.users.each do |u|
-      u.server_unmute
-      sleep(0.01)
-    end
-  end
-  
+  # command :unmute, help_available: false, required_roles: [Roles::Operators], min_args: 1, max_args: 1 do |event, dave|
+    # channel1=nil
+    # event.server.channels.each do |carl|
+      # if carl.name == dave and carl.voice?
+        # channel1=carl
+      # end
+    # end
+    # event.respond "And the silence fades from " << channel1.name
+    # channel1.users.each do |u|
+      # u.server_unmute
+      # sleep(0.01)
+    # end
+  # end  
 end
