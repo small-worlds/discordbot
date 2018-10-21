@@ -33,7 +33,6 @@ module CustomCommands
     summon: "https://youtu.be/_TrQ5pA1azo",
     thargoids: "https://cdn.meme.am/instances/500x/62949872.jpg",
     ytho: "http://i.imgur.com/yNlQWRM.jpg"
-  end
   }
 
   command :meme, description: "Full of dank.", bucket: :memes, usage: "meme [<meme name>]\nAvailable memes:\n- #{memes.keys.join("\n- ")}", min_args: 0, max_args: 1 do |event, meme|
