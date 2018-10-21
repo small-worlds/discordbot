@@ -10,16 +10,18 @@ module TableFlip
       event.respond "Table is broken! Please fix!"
     else
       if isUnFlipped
-        event.respond "(╯°□°）╯︵ ┻━┻"
+        event << "(╯°□°）╯︵ ┻━┻"
         isUnFlipped = false
-        if (rand>=0)
+        if (rand>=0.9)
           isBroken = true
+          event << "\nTable is broken! Please Fix!"
         end
         break
       else
-        event.respond "Table already flipped ┻━┻"
+        event << "Table already flipped ┻━┻"
         if (rand>=0.7)
           isBroken = true
+          event << "\nTable is broken! Please Fix!"
         end
         break
       end
