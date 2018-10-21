@@ -16,7 +16,9 @@ module CustomCommands
     ],
     esspace: "https://cdn.discordapp.com/attachments/143948895595003904/218099450239909888/IMG_0217.JPG",
     fangirling: "http://i.imgur.com/GBgz12Q.gif",
+    flextape: "https://gfycat.com/essentialpopularhake",
     gofast: "https://41.media.tumblr.com/tumblr_ma86gbciIo1qg1jivo1_1280.png",
+    hangin: "https://cdn.discordapp.com/attachments/363726157310328833/367439918500151296/my-hell.png",
     innuendo: "https://cdn.meme.am/instances/500x/18009491.jpg",
     itshappening: "https://giphy.com/gifs/neogaf-ron-sanders-makrD8LE59iJa",
     knife: "http://pngimg.com/upload/spoon_PNG3043.png",
@@ -28,6 +30,7 @@ module CustomCommands
     speedy: "http://i.imgur.com/Q7ppJ3I.png",
     spoon: "http://vignette3.wikia.nocookie.net/unsuper/images/b/b1/The_Tick.jpg/revision/latest?cb=20150415023059",
     starportservices: "http://i.imgur.com/nM8egVC.jpg",
+    summon: "https://youtu.be/_TrQ5pA1azo",
     thargoids: "https://cdn.meme.am/instances/500x/62949872.jpg",
     ytho: "http://i.imgur.com/yNlQWRM.jpg"
   }
@@ -70,13 +73,5 @@ module CustomCommands
 
   command :swe3 do |event|
     event.respond "It's happening!"
-  end
-
-  command :summon do |event|
-    event.respond "https://youtu.be/_TrQ5pA1azo"
-  end
-
-  command :hangin do |event|
-    event.respond "https://cdn.discordapp.com/attachments/363726157310328833/367439918500151296/my-hell.png"
   end
 end
