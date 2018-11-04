@@ -12,14 +12,14 @@ module TableFlip
       if isUnFlipped
         event << "(╯°□°）╯︵ ┻━┻"
         isUnFlipped = false
-        if (rand>=0.9)
+        if (rand(201)==1)
           isBroken = true
           event << "\nСтол сломан! Пожалуйста исправьте!"
         end
         break
       else
         event << "Table already flipped ┻━┻"
-        if (rand>=0.7)
+        if (rand(71)==1)
           isBroken = true
           event << "\nСтол сломан! Пожалуйста исправьте!"
         end
@@ -46,8 +46,12 @@ module TableFlip
   
   command :fix, description: "Fixes a broken table" do |event|
     break if event.channel.id != Channel::Table
-    isBroken = false
-    event.respond "Таблица исправлена. Отставить!"
+    if isBroken = false
+      event.respond "Таблица исправлена. Отставить!"
+      isBroken = false
+    else
+      event.respond "Таблица не нарушена."
+    end
   end
   
   command :shrug, description: "*shrugs*" do |event|
