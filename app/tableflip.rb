@@ -14,14 +14,14 @@ module TableFlip
         isUnFlipped = false
         if (rand>=0.9)
           isBroken = true
-          event << "\nTable is broken! Please Fix!"
+          event << "\nСтол сломан! Пожалуйста исправьте!"
         end
         break
       else
         event << "Table already flipped ┻━┻"
         if (rand>=0.7)
           isBroken = true
-          event << "\nTable is broken! Please Fix!"
+          event << "\nСтол сломан! Пожалуйста исправьте!"
         end
         break
       end
@@ -31,7 +31,7 @@ module TableFlip
   command :unflip, bucket: :slowdown, description: "Unflip those flipped tables. Poor table-kun" do |event|
     break if event.channel.id != Channel::Table #Same code as in lists.rb, forces use in a specific channel
     if isBroken
-      event.respond "Table is broken! Please fix!"
+      event.respond "Стол сломан! Пожалуйста исправьте!"
     else
       if isUnFlipped
         event.respond "table already upright ┬─┬"
@@ -47,7 +47,7 @@ module TableFlip
   command :fix, description: "Fixes a broken table" do |event|
     break if event.channel.id != Channel::Table
     isBroken = false
-    event.respond "Table is fixed. As you were!"
+    event.respond "Таблица исправлена. Отставить!"
   end
   
   command :shrug, description: "*shrugs*" do |event|
