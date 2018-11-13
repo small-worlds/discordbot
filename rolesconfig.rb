@@ -56,6 +56,7 @@ end
 module People
  Nuse = '<@!114144783739518981>'
  Ravstar = '<@!118017724537503751>'
+ Leif = '<@161208797195534336>'
 end
 
 module PeopleID

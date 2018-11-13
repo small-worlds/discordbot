@@ -72,6 +72,6 @@ module CustomCommands
   end
 
   command :swe3 do |event|
-    event.respond "It's happening!"
+    event.respond "It's happened"
   end
 end
