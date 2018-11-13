@@ -18,7 +18,7 @@ module TableFlip
         end
         break
       else
-        event.respond "Table already flipped ┻━┻"
+        event << "Table already flipped ┻━┻"
         if (rand>=0.7)
           isBroken = true
           event << "\nTable is broken! Please Fix!"
