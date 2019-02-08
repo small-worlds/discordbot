@@ -14,6 +14,7 @@ module CustomCommands
       "https://cdn.discordapp.com/attachments/197446400479330304/218859855773958145/Thargoid.jpg",
       "https://cdn.discordapp.com/attachments/192085854116773889/220904177407098880/Brabenisthargoid.png"
     ],
+    channel: ["https://cdn.discordapp.com/attachments/210414207240372224/509036649611657227/nuse_berd_chat.png"],
     esspace: "https://cdn.discordapp.com/attachments/143948895595003904/218099450239909888/IMG_0217.JPG",
     fangirling: "http://i.imgur.com/GBgz12Q.gif",
     flextape: "https://gfycat.com/essentialpopularhake",
